@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<head>
+    <title>the holmdel robotics bible | code archive</title>
+    <link rel="stylesheet" href="../default.css">
+</head>
+
+<body class="shadowed-bg" style="margin-top:0px">
+    <header class="bg" style="margin-top: -20px; padding-top: 20px; padding-bottom: 8px; margin-left: -8px; margin-right: -8px;">
+        <h1 style="margin-bottom: 20px;">the holmdel robotics bible <sub>code archive</sub></h1>
+        <nav>
+            <span><a href="../index.html">home</a></span>
+            <span> | </span>
+            <span><a href="../new_members.html">for new team members</a></span>
+            <span> | </span>
+            <span><a href="../">for new captains</a></span>
+            <span> | </span>
+            <span><a href="../code_archive.html">code archive</a></span>
+            <span> | </span>
+            <span><a href="../">hall of fame</a></span>
+            <span> | </span>
+            <span><button style="margin-top: 10px;" onclick="toggleTheme()"><u>toggle dark mode</u></button></span>
+        </nav>
+    </header>
+    
+    <hr style="margin-top: 0px; margin-bottom: 12px;">
+
+    <div style="padding-left: 0px;padding-right: 0px; margin-bottom:100px;" class="shadowed-bg">
+        <div class="sidebar">
+<p style="white-space: pre-wrap;"><a href="#tut1">1. Java Introduction</a>
+    <a href="#tut1.1">1.1 Printing</a>
+    <a href="#tut1.2">1.2 Variables</a>
+        • <a href="#tut1.2.1">Integers</a>
+        • <a href="#tut1.2.2">Doubles</a>
+        • <a href="#tut1.2.3">Strings</a>
+        • <a href="#tut1.2.4">Booleans</a>
+    <a href="#tut1.3">1.3 If Statements</a>
+    <a href="#tut1.4">1.4 Loops</a>
+    1.5 Methods
+<a href="#tut2">2. Java in FTC</a>
+</p>
+
+        </div>
+
+        <div style="margin-left: 190px; margin-bottom: 12px; padding-left: 50px; padding-right: 50px; border-style: solid;" class="bg">
+            <h1 id="tut1">1. Java Introduction</h1>
+            <div class="empty">
+                <p>
+                    This first part of the guide is for complete beginners to Java, so if you already get the gist of it skip to part 2 for applying it to FTC. Follow along with this portion of the tutorial with an online Java compiler like <a href="https://codehs.com/sandbox/id/java-main-ikMKN6" target="_blank">CodeHS</a>. If you have a personal computer rather than a school laptop I'd advise downloading an IDE like IntelliJ since it's much faster than online ones. We won't be getting to Java coding for FTC specifically just yet, but we'll switch over to the FTC OnBotJava application in the second section of this guide. Keep in mind that this guide will only teach you Java skills that are relevant to FTC, and won't be getting to certain otherwise important aspects of the language.<br>
+                </p>
+
+                <h2 id="tut1.1">1.1 Printing</h2>
+                <div class="empty">
+<p>Opening up the compiler you'll see a screen that looks something like this:</p>
+                <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}</code>
+                </div>
+                <p>
+                    For now, just ignore everything other than the <code>System.out.println("Hello, World!");</code> line. We'll go over what <code>public class MyProgram</code> and <code>public static void main(String[] args)</code> mean later in this section, but for now just know that all your code should be contained within those brackets.<br> Click the blue Run button in the upper right hand corner of your program window and notice that the phrase <code>Hello, World!</code> contained within the quotation marks are printed into the output window on the right side of your screen.<br>
+                    Next, try copy-pasting the line or changing the text like this:
+                </p>
+                <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+        System.out.println("Goodbye, World!");
+    }
+}</code>
+                </div>
+                <p>
+                    The output window should show:
+                </p>
+                <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+Hello, World!
+Goodbye, World!</code>
+                </div>
+                <p>
+                    When you hit run, the Java compiler reads the lines of code you write from top to bottom and executes them in that order. <code>System.out.println()</code> is a line of code that takes a phrase within quotations, called a <code>String</code>, inside its parenthesis and prints it into the output. The specifics of how this line works will make more sense once you make it to reviewing methods, but until then that's all you need to know.<br>
+                    <code>String</code>s aren't the only things <code>System.out.println()</code> statements can print. Try removing the quotation marks and just type a number, for example <code>System.out.println(23);</code>. When the code executes, <code>23</code> should be printed in the console.<br>
+                    You may have noticed that every line of code within <code>main</code> ends with a semicolon. This tells the Java compiler where the statement ends, and it's very important to make sure not to forget to put it there. When you're working with a huge script and hundreds of lines it can be very irritating to search through it all and find an error, especially when it's something as little as a singular semicolon.
+                </p>
+                </div>
+                
+                <h2 id="tut1.2">1.2 Variables</h2>
+                <div class="empty">
+                    <h3 id="tut1.2.1">Integers</h3>
+                    <p>
+                        Variables in Java function very similarly to what you know from algebra class. To create a variable, you must first enter the type, then the name, then set it equal to a value. For example, an integer value is represented by the variable type <code>int</code>. To create an <code>int</code> variable named <code>x</code> that equals <code>0</code>, enter this:
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        int x = 0;
+    }
+}</code>
+                    </div>
+                    <p>
+                        Next, try printing x with a <code>System.out.println()</code> statement like this:
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        int x = 0;
+        System.out.println(x);
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output (Click to reveal)</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+0</code></div>
+                    </details>
+                    <p>
+                        Because the <code>=</code> operator means assigning the value on the right of the <code>=</code> sign to the variable on the left of it, the code should output <code>0</code>, the assigned value of <code>x</code>. <br>
+                        Math can be done with variables, too. Note that while initially creating a variable you must define its type, but when referencing or modifiying it at any point after that you use the variable name only.
+                    </p>
+                     <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        int x = 1;
+        int y = 2;
+        int sum = x + y;
+        System.out.println(sum);
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+3</code></div>
+                    </details>
+                    <p>
+                        Subtraction (<code>-</code>), multiplication (<code>*</code>), and division (<code>/</code>) can all be done in this same way.<br>
+                        If you want to increment or decrement a variable you can write something like this:
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        int number = 0;
+        number = number - 5;
+        System.out.println(number);
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+-5</code></div>
+                    </details>
+                    <p>
+                        Because you're setting <code>number</code> equal to itself minus <code>5</code> and its initial value is <code>0</code>, your code should output <code>-5</code>.<br>
+                        However, rather than rewriting the variable name every time you want to change it, you can just type the line as <code>number -= 5;</code>. For another example, typing <code>number *= 2;</code> is the same thing as typing <code>number = number * 2;</code><br><br>
+                        CHALLENGE: Try determining the output of this code segment without the use of a compiler.
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        int a = 1;
+        a = a + 8;
+        a /= 2;
+        a += -3;
+        a = a * 5;
+        System.out.println(a);
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+5</code></div>
+                    </details>
+                    <h3 id="tut1.2.2">Doubles</h3>
+                    <p>
+                        You may have noticed an issue with <code>int</code> values--that is, dividing with them doesn't leave any decimal or remainder value. For example, even though dividing 3 by 2 should equal 1.5, dividing an <code>int</code> equal to <code>3</code> by an <code>int</code> equal to <code>2</code> will cut off the decimal place and return the value <code>1</code>. <br>   
+                        <code>int</code>s aren't the only kinds of variables, however. <code>double</code>s are variables capable of holding decimal places as well. Regardless of whether a <code>double</code> has a value in its decimal places, there must be at least one decimal place when declaring one. To solve the issue of division with <code>int</code>s, use these variables instead:
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        double quotient = 3.0 / 2.0;
+        System.out.println(quotient);
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+1.5</code></div>
+                    </details>
+                    <h3 id="tut1.2.3">Strings</h3>
+                    <p>
+                        Another useful variable type is the <code>String</code>. Like you saw earlier in the first lesson, a <code>String</code> is a kind of variable that is contained within quotation marks that can hold text. Take this code segment for instance:
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        String str = "First Tech Challenge";
+        System.out.println(str);
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+First Tech Challenge</code></div>
+                    </details>
+                    <p>
+                        More text can be added to <code>String</code>s using <code>+=</code> as well.
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        String str = "First Tech Challenge";
+        str += " 2023";
+        System.out.println(str);
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+First Tech Challenge 2023</code></div>
+                    </details>
+                    <h3 id="tut1.2.4">Booleans</h3>
+                    <p>
+                        Another important kind of variable is a <code>boolean</code>. <code>boolean</code> values store either <code>true</code> or <code>false</code>.
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        boolean value = true;
+        System.out.println(value);
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+true</code></div>
+                    </details>
+                    <p>
+                        <code>boolean</code>s come with a few different operators. <code>&&</code> (pronounced "and") is an operator that compares two different boolean values and returns <code>true</code> if and only if both booleans are <code>true</code>.
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        boolean x = true;
+        boolean y = true;
+        boolean value = x && y;
+        System.out.println(value);
+        boolean z = false;
+        System.out.println(value && z);
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+true
+false</code></div>
+                    </details>
+
+                    <p>
+                        <code>||</code> (pronounced "or") operators return <code>true</code> if either one of the two values being compared are <code>true</code>. Otherwise, it returns <code>false</code>.
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        boolean x = false;
+        boolean y = false;
+        boolean value = x || y;
+        System.out.println(value);
+        boolean z = true;
+        System.out.println(value || z);
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+false
+true</code></div>
+                    </details>
+                    <p>
+                        Some operators also compare non-<code>boolean</code> values and return a <code>boolean</code>. <code>></code> (greater than) and <code><</code> (less than) operators compare two <code>int</code> or <code>double</code> values and return <code>true</code> if the comparison is valid. <code>>=</code> (greater than or equal to) and <code><=</code> (less than or equal to) are also useful operators that compare two values. <code>==</code> (equals-equals) returns true the two values being compared are identical, and <code>!=</code> (not-equals) returns true if they're different.
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        int value1 = 7;
+        int value2 = 4;
+        int value3 = 4;
+        System.out.println(value1 > value2);
+        System.out.println(value1 < value3);
+        System.out.println(value2 >= value3);
+        System.out.println(value1 <= value2);
+        System.out.println(value2 == value3);
+        System.out.println(value2 != value3);
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+true
+false
+true
+false
+true
+false</code></div>
+                    </details>
+                    <p>
+                        Finally, the <code>!</code> (pronounced "not") operator negates a boolean value. 
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        boolean p = true;
+        System.out.println(!p);
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+false</code></div>
+                    </details>
+                    <p>
+                        Variables are vital to coding in Java (and coding languages in general), so it's important to understand this lesson before moving on to the next.
+                    </p>
+                    
+                </div>
+                <h2 id="tut1.3">1.3 If Statements</h2>
+                <div class="empty">
+                    <p>
+                        <code>if</code> statements are control flow tools that can change what happens when the code is executed based on a boolean value. If the value within its parenthesis are true, the code within the <code>if</code> statement's brackets will run. If not, then it will not run.
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        boolean willRun = true;
+        if (willRun) {
+            System.out.println("test");
+        }
+        if (!willRun) {
+            System.out.println("test2");
+        }
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+test</code></div>
+                    </details>
+                    <p>
+                        an <code>else</code> statement can be placed directly after the brackets of an <code>if</code> statement. The contents of the <code>else</code> statement only run if the <code>if</code> statement doesn't. 
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        boolean a = true;
+        boolean b = false;
+        if (a && b) {
+            System.out.println("if");
+        } else {
+            System.out.println("else");
+        }
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+else</code></div>
+                    </details>
+                    <p>
+                        Finally, <code>else if</code> statements only run if the previous <code>if</code> statement doesn't AND the boolean value within the parenthesis is true.
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        int number = 3;
+        if (number == 1) {
+            System.out.println("one");
+        } else if (number == 2) {
+            System.out.println("two");
+        } else if (number == 3) {
+            System.out.println("three");
+        } else if (number == 4) {
+            System.out.println("four");
+        }
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+three</code></div>
+                    </details>
+                </div>
+                <h2 id="tut1.4">1.4 Loops</h2>
+            </div>
+        </div>
+        <div style="margin-left: 190px; margin-bottom: 12px; padding-left: 50px; padding-right: 50px; border-style: solid;" class="bg">
+            <h1 id="tut2">2. Java in FTC</h1>
+        </div>
+    </div>
+    </div>
+
+    <footer class="bg" style="margin-bottom: -8px; margin-left: -8px; margin-right: -8px;">
+        <hr>
+        <div>
+            <img src="./images/hornet_logo_black.png" id="logo" alt="holmdel robotics hornet logo" style="width:100px;height:100px;" class="center">
+        </div>
+        <div class="badges">
+            <img src=".././images/badges/button_copy16.png" alt="the frog" style="width:80px;height:15px;">
+            <img src=".././images/badges/button_copy9.gif" alt="funky shirts" style="width:80px;height:15px;">
+            <img src=".././images/badges/spongebob.gif" alt="sponge bob" style="width:80px;height:15px;">
+            <img src=".././images/badges/nb2_copy1.gif" alt="nice" style="width:80px;height:15px;">
+            <img src=".././images/badges/logitech.gif" alt="thank you logitech for bankrolling me (real)" style="width:80px;height:15px;">
+            <img src=".././images/badges/loveani.gif" alt="be who you are" style="width:80px;height:15px;">
+            <img src=".././images/badges/autumn.gif" alt="me !!!" style="width:80px;height:15px;">
+            <img src=".././images/badges/clickherebtn.gif" alt="click here" style="width:80px;height:15px;">
+            <img src=".././images/badges/give_blood.gif" alt="give blood" style="width:80px;height:15px;">
+            <img src=".././images/badges/8015_familyguy.png" alt="family guy" style="width:80px;height:15px;">
+            <img src=".././images/badges/infp.gif" alt="im an infp" style="width:80px;height:15px;">
+            <img src=".././images/badges/savewater.gif" alt="save water" style="width:80px;height:15px;">
+            <img src=".././images/badges/luvsoaps.gif" alt="i <3 soaps" style="width:80px;height:15px;">            
+        </div>        
+        
+    </footer>
+
+    <script>
+        if (window.localStorage.getItem('theme') == 'default') {
+            setTheme('../default.css');
+        } else {
+            setTheme('../dark.css');
+        }
+
+        function toggleTheme() {
+            if (window.localStorage.getItem('theme') == 'default') {
+                setTheme('../dark.css');
+                window.localStorage.setItem('theme', 'dark');
+            } else {
+                setTheme('../default.css');
+                window.localStorage.setItem('theme', 'default');
+            }
+        }
+
+        function setTheme(x) {
+            var get = document.getElementById('logo');
+            var theme = document.getElementsByTagName('link')[0];
+            theme.setAttribute('href', x);
+            if (x == '../default.css') {
+                get.src = ".././images/hornet_logo_black.png";
+            } else {
+                get.src = ".././images/hornet_logo_white.png";
+            }
+        }
+    </script>
+</body>

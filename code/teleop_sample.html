@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<head>
+    <title>the holmdel robotics bible | code archive</title>
+    <link rel="stylesheet" href="../default.css">
+</head>
+
+<body>
+    <header>
+        <h1>the holmdel robotics bible <sub>code archive</sub></h1>
+        <nav>
+            <span><a href="../index.html">home</a></span>
+            <span> | </span>
+            <span><a href="../new_members.html">for new team members</a></span>
+            <span> | </span>
+            <span><a href="../">for new captains</a></span>
+            <span> | </span>
+            <span><a href="../code_archive.html">code archive</a></span>
+            <span> | </span>
+            <span><a href="../">hall of fame</a></span>
+            <span> | </span>
+            <span><button style="margin-top: 10px;" onclick="toggleTheme()"><u>toggle dark mode</u></button></span>
+        </nav>
+    </header>
+    
+    <hr>
+
+    <div>
+        <h2>TeleOP Code File</h2>
+        <p>
+            if you need any explanation of anything in this program, be sure to check out the walkthrough.
+        </p>
+        <div class="codebg">
+            <code style="white-space: pre-wrap">
+package org.firstinspires.ftc.teamcode;
+import java.util.*;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.*;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+
+@TeleOp(name = "TeleOPMain", group = "")
+public class TeleOPMain extends LinearOpMode {
+
+    // Movement Motors (Front Left, Front Right, Rear Left, Rear Right)
+    private DcMotor FL;
+    private DcMotor FR;
+    private DcMotor RL;
+    private DcMotor RR;
+
+    // Slide/Claw
+    private DcMotor slideMotor;
+    private Servo clawServo;
+
+    // Misc
+    private boolean clawOpen;
+    private int slidePosVal;
+
+    // Drive Train - Movement
+    Thread driveTrain = new Thread() {
+        public void run() {
+            int Arm_Angle = 0;
+            while (opModeIsActive()) {
+            /*A bunch of math for movement, you don't really need
+            to worry about understanding this*/
+            double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y);
+            double robotAngle = Math.atan2(-gamepad1.left_stick_y, gamepad1.left_stick_x) - Math.PI / 4;
+            double rightX = gamepad1.right_stick_x;
+            double v1 = r * Math.cos(robotAngle) + rightX * .6;
+            double v2 = r * Math.sin(robotAngle) - rightX * .6;
+            double v3 = r * Math.sin(robotAngle) + rightX * .6;
+            double v4 = r * Math.cos(robotAngle) - rightX * .6;
+            double s = 1;
+
+            //Slow Mode
+            if (gamepad1.left_bumper) {
+                s = .4;
+            } else {
+                s = 1;
+            }
+
+            FL.setPower(v1 * s);
+            FR.setPower(v2 * s);
+            RL.setPower(v3 * s);
+            RR.setPower(v4 * s);
+            }
+
+            }
+        }
+    };
+
+    //Linear Slide Movement
+    Thread slideMove = new Thread() {
+        public void run() {
+            while (opModeIsActive()) {
+            if (gamepad1.dpad_up) {
+                //High position
+                slideMotor.setTargetPosition(/*insert high pos val here*/);
+                slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                slideMotor.setPower(.75);
+                slidePosVal = /*insert high pos val here*/;
+            } else if (gamepad1.dpad_left) {
+                //Middle position
+                slideMotor.setTargetPosition(/*insert medium pos val here*/);
+                slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                slideMotor.setPower(.75);
+                slidePosVal = /*insert medium pos val here*/;
+            } else if (gamepad1.dpad_right) {
+                //Low position
+                slideMotor.setTargetPosition(/*insert low pos val here*/);
+                slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                slideMotor.setPower(.75);
+                slidePosVal = /*insert low pos val here*/;
+            } else if (gamepad1.dpad_down) {
+                //Ground position
+                slideMotor.setTargetPosition(0);
+                slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                slideMotor.setPower(.75);
+                slidePosVal = 0;
+            } else {
+                /*After setting slide to a position, continue running the
+                linear slide to that same position in order to mitigate
+                drooping*/
+                switch (slidePos) {
+                slideMotor.setTargetPosition(slidePosVal);
+                slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                slideMotor.setPower(.5);
+                }
+            }
+        }
+    };
+
+    @Override
+    public void runOpMode() {
+        //Initialize variables
+        slideMotor = hardwareMap.get(DcMotor.class, "Slide");
+        slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        FL = hardwareMap.dcMotor.get("left front");
+        FR = hardwareMap.dcMotor.get("right front");
+        RL = hardwareMap.dcMotor.get("left back");
+        RR = hardwareMap.dcMotor.get("right back");
+        clawServo = hardwareMap.servo.get("ClawServo");
+
+        waitForStart();
+
+        FL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        FR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        RL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        RR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        FL.setDirection(DcMotorSimple.Direction.REVERSE);
+        RL.setDirection(DcMotorSimple.Direction.REVERSE);
+        FL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        FR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        RL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        RR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+        driveTrain.start();
+        slideMove.start();
+
+        while (opModeIsActive()) {
+            if (gamepad1.a) {
+            if (!clawOpen) {
+                clawServo.setPosition(/*open*/);
+            } else {
+                clawServo.setPosition(/*close*/);
+            }
+            clawOpen = !clawOpen;
+            sleep(200);
+            }
+        }
+    }
+}
+                </code>
+            </div>
+        
+        
+
+    </div>
+
+    <footer>
+        <div>
+            <img src="./images/hornet_logo_black.png" id="logo" alt="holmdel robotics hornet logo" style="width:100px;height:100px;margin-top:100px;" class="center">
+        </div>
+        <hr>
+        <div class="badges">
+            <img src=".././images/badges/button_copy16.png" alt="the frog" style="width:80px;height:15px;">
+            <img src=".././images/badges/button_copy9.gif" alt="funky shirts" style="width:80px;height:15px;">
+            <img src=".././images/badges/spongebob.gif" alt="sponge bob" style="width:80px;height:15px;">
+            <img src=".././images/badges/nb2_copy1.gif" alt="nice" style="width:80px;height:15px;">
+            <img src=".././images/badges/logitech.gif" alt="thank you logitech for bankrolling me (real)" style="width:80px;height:15px;">
+            <img src=".././images/badges/loveani.gif" alt="be who you are" style="width:80px;height:15px;">
+            <img src=".././images/badges/autumn.gif" alt="me !!!" style="width:80px;height:15px;">
+            <img src=".././images/badges/clickherebtn.gif" alt="click here" style="width:80px;height:15px;">
+            <img src=".././images/badges/give_blood.gif" alt="give blood" style="width:80px;height:15px;">
+            <img src=".././images/badges/8015_familyguy.png" alt="family guy" style="width:80px;height:15px;">
+            <img src=".././images/badges/infp.gif" alt="im an infp" style="width:80px;height:15px;">
+            <img src=".././images/badges/savewater.gif" alt="save water" style="width:80px;height:15px;">
+            <img src=".././images/badges/luvsoaps.gif" alt="i <3 soaps" style="width:80px;height:15px;">            
+        </div>        
+    </footer>
+
+    <script>
+        if (window.localStorage.getItem('theme') == 'default') {
+            setTheme('../default.css');
+        } else {
+            setTheme('../dark.css');
+        }
+
+        function toggleTheme() {
+            if (window.localStorage.getItem('theme') == 'default') {
+                setTheme('../dark.css');
+                window.localStorage.setItem('theme', 'dark');
+            } else {
+                setTheme('../default.css');
+                window.localStorage.setItem('theme', 'default');
+            }
+        }
+
+        function setTheme(x) {
+            var get = document.getElementById('logo');
+            var theme = document.getElementsByTagName('link')[0];
+            theme.setAttribute('href', x);
+            if (x == '../default.css') {
+                get.src = ".././images/hornet_logo_black.png";
+            } else {
+                get.src = ".././images/hornet_logo_white.png";
+            }
+        }
+    </script>
+</body>

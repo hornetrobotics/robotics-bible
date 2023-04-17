@@ -1,0 +1,108 @@
+body {background-color: rgb(31, 26, 26);}
+h1 {text-align: center; color: rgb(255, 187, 202)}
+h2 {color: white;}
+h3 {color: white;}
+p {color: white;}
+code {color: white; background-color: rgb(0, 0, 0);}
+a {text-align: center; color: rgb(255, 187, 202)}
+span {color: white;}
+details {color: white;}
+nav {text-align: center;}
+hr{
+    height: 1px;
+    background-color: rgb(255, 187, 202);
+    border: none;
+}
+div {  
+    padding-left: 100px; 
+    padding-right: 100px;  
+    border-color: rgb(255, 187, 202);
+    border-style: none;
+}  
+.center {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 10px;
+}
+.badges {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    padding: 0px;
+    text-align: center;
+}
+.codebg {
+    background-color: rgb(0, 0, 0);
+}
+
+.codebgsmall {
+    background-color: rgb(0, 0, 0);
+    padding-top: 0px;
+    padding-left: 20px; 
+    padding-right: 20px; 
+    padding-bottom: 15px; 
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.sidebar {
+    height: 250px;
+    width: 150px;
+    position: -webkit-sticky; /* for Safari users */
+    position: sticky;
+    top: 0px;
+    float: left;
+    margin-top: 0px;
+    padding-top: 2px;
+    background-color: rgb(51, 45, 45);
+    border-color: rgb(255, 187, 202);
+    border-style: solid;
+    border-width: 3px;
+    padding-left: 10px; 
+    padding-right: 10px; 
+}
+    
+.sidebar div {
+    padding: 8px;
+    font-size: 24px;
+    display: block;
+}
+    
+.body-text {
+    margin-right: 5px;
+}
+
+.empty {
+    padding-left: 0px; 
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;  
+    margin: 0px;
+    border-style: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.shadowed-bg {
+    background-color: rgb(0, 0, 0);
+}
+
+.bg {
+    background-color: rgb(31, 26, 26);
+}
+
+button {
+    font-family: initial; 
+    font-size: initial;
+    padding: 0px;
+    margin: 0px;
+    background-color: rgb(31, 26, 26);
+    border-style: none;
+    color: rgb(255, 187, 202);
+    cursor: pointer;
+}

@@ -1,0 +1,111 @@
+body {background-color: rgb(182, 252, 189);}
+h1 {text-align: center; color: rgb(37, 82, 42);}
+h2 {color: black;}
+h3 {color: black;}
+p {color: black;}
+code {color: black; background-color: rgb(155, 235, 163);}
+a {text-align: center; color: rgb(39, 102, 45)}
+span {color: black;}
+
+details {color: rgb(37, 82, 42);}
+
+nav {text-align: center;}
+hr{
+    height: 1px;
+    background-color: rgb(94, 184, 103);
+    border: none;
+}
+div {  
+    padding-left: 100px; 
+    padding-right: 100px;  
+    border-color: rgb(94, 184, 103);
+    border-width: 3px;
+    border-style: none;
+}  
+.center {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 10px;
+}
+.badges {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    padding: 0px;
+    text-align: center;
+}
+.codebg {
+    background-color: rgb(155, 235, 163);
+}
+
+.codebgsmall {
+    background-color: rgb(155, 235, 163);
+    padding-top: 0px;
+    padding-left: 20px; 
+    padding-right: 20px; 
+    padding-bottom: 15px; 
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.sidebar {
+    height: 250px;
+    width: 150px;
+    position: -webkit-sticky; /* for Safari users */
+    position: sticky;
+    top: 0px;
+    float: left;
+    margin-top: 0px;
+    padding-top: 2px;
+    background-color: rgb(192, 255, 198);
+    border-color: rgb(94, 184, 103);
+    border-style: solid;
+    border-width: 3px;
+    padding-left: 10px; 
+    padding-right: 10px; 
+}
+    
+.sidebar div {
+    padding: 8px;
+    font-size: 24px;
+    display: block;
+}
+    
+.body-text {
+    margin-right: 5px;
+}
+
+.empty {
+    padding-left: 0px; 
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;  
+    margin: 0px;
+    border-style: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.shadowed-bg {
+    background-color: rgb(146, 228, 156);;
+}
+
+.bg {
+    background-color: rgb(182, 252, 189);
+}
+
+button {
+    font-family: initial; 
+    font-size: initial;
+    padding: 0px;
+    margin: 0px;
+    background-color: rgb(182, 252, 189);
+    border-style: none;
+    color: rgb(39, 102, 45);
+    cursor: pointer;
+}
