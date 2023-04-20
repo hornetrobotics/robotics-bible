@@ -437,6 +437,60 @@ three</code></div>
                     </details>
                 </div>
                 <h2 id="tut1.4">1.4 Loops</h2>
+                <div class="empty">
+                    <p>
+                        Loops can be used to run a certain line of code a certain amount of times without having to rewrite it over and over. A <code>while</code> statement runs for however long the <code>boolean</code> value within its parenthesis remains true.
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        int i = 0;
+        while (i < 3) {
+            System.out.println("Looped " + i + " times");
+            i++;
+        }
+        System.out.println("Because i is no longer less than 3, the while statement stopped looping.");
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+Looped 1 times
+Looped 2 times
+Looped 3 times
+Because i is no longer less than 3, the while statement stopped looping.</code></div>
+                    </details>
+                    <p>
+                        <code>while</code> loops are generally used when the number of times it needs to loop is indefinite (while waiting for user input, looping infinitely, etc.). Loops that loop a set number of times like the example above should be rewritten as <code>for</code> loops. <br>
+                        A <code>for</code> loop has three conditions within its parenthesis as opposed to one in <code>if</code> and <code>while</code> statements. The first condition is creating a 'counter' variable which usually begins at zero. The second condition is setting an end point for the looping with a boolean expression using the counter variable, just like how you do it in a <code>while</code> statement. The third condition is for incrementing the counter at the end of each loop. <code>for</code> loops may look complicated, but they're pretty simple once you're used to them and are very important for condensing <code>while</code> loop code.
+                    </p>
+                    <img src="../images/for_loop_diagram.png" width="500px" height="250px">
+                    <p>Here's the previous example rewritten as a <code>for</code> loop:</p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        for (i = 0; i < 3; i++) {
+            System.out.println("Looped " + i + " times");
+        }
+        System.out.println("Because i is no longer less than 3, the while statement stopped looping.");
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+Looped 1 times
+Looped 2 times
+Looped 3 times
+Because i is no longer less than 3, the while statement stopped looping.</code></div>
+                    </details>
+                    
+                </div>
             </div>
         </div>
         <div style="margin-left: 190px; margin-bottom: 12px; padding-left: 50px; padding-right: 50px; border-style: solid;" class="bg">
