@@ -37,6 +37,7 @@
     <a href="#tut1.4">1.4 Loops</a>
     <a href="#tut1.5">1.5 Methods</a>
     <a href="#tut1.6">1.6 Instance Variables</a>
+    <a href="#tut1.7">1.7 Variable Types</a>
 <a href="#tut2">2. Java in FTC</a>
 </p>
 
@@ -46,7 +47,7 @@
             <h1 id="tut1">1. Java Introduction</h1>
             <div class="empty">
                 <p>
-                    This first part of the guide is for complete beginners to Java, so if you already get the gist of it skip to part 2 for applying it to FTC. Follow along with this portion of the tutorial with an online Java compiler like <a href="https://codehs.com/sandbox/id/java-main-ikMKN6" target="_blank">CodeHS</a>. If you have a personal computer rather than a school laptop I'd advise downloading an IDE like IntelliJ since it's much faster than online ones. We won't be getting to Java coding for FTC specifically just yet, but we'll switch over to the FTC OnBotJava application in the second section of this guide. Keep in mind that this guide will only teach you Java skills that are relevant to FTC, and won't be getting to certain otherwise important aspects of the language.<br>
+                    This first part of the guide is for complete beginners to Java, so if you already get the gist of it skip to part 2 for applying it to FTC. Follow along with this portion of the tutorial with an online Java compiler like <a href="https://codehs.com/sandbox/id/java-main-ikMKN6" target="_blank">CodeHS</a>. If you have a personal computer rather than a school laptop I'd advise downloading an IDE like <a href="https://www.jetbrains.com/idea/download/#section=windows" target="_blank">IntelliJ</a> since it's much faster than online ones. We won't be getting to Java coding for FTC specifically just yet, but we'll switch over to the FTC OnBotJava application in the second section of this guide. Keep in mind that this guide will only teach you Java skills that are relevant to FTC, and won't be getting to certain otherwise important aspects of the language.<br>
                 </p>
 
                 <h2 id="tut1.1">1.1 Printing</h2>
@@ -449,7 +450,7 @@ public class MyProgram {
     public static void main(String[] args) {
         int i = 0;
         while (i < 3) {
-            System.out.println("Looped " + i + " times");
+            System.out.println("Loop number " + i);
             i++;
         }
         System.out.println("Because i is no longer less than 3, the while statement stopped looping.");
@@ -460,9 +461,9 @@ public class MyProgram {
                         <summary>Output</summary>
                         <div class="codebgsmall">
 <code style="white-space: pre-wrap;">
-Looped 1 times
-Looped 2 times
-Looped 3 times
+Loop number 0
+Loop number 1
+Loop number 2
 Because i is no longer less than 3, the while statement stopped looping.</code></div>
                     </details>
                     <p>
@@ -478,9 +479,9 @@ Because i is no longer less than 3, the while statement stopped looping.</code><
 public class MyProgram {
     public static void main(String[] args) {
         for (i = 0; i < 3; i++) {
-            System.out.println("Looped " + i + " times");
+            System.out.println("Loop number " + i);
         }
-        System.out.println("Because i is no longer less than 3, the while statement stopped looping.");
+        System.out.println("Because i is no longer less than 3, the for statement stopped looping.");
     }
 }</code>
                     </div>
@@ -488,10 +489,10 @@ public class MyProgram {
                         <summary>Output</summary>
                         <div class="codebgsmall">
 <code style="white-space: pre-wrap;">
-Looped 1 times
-Looped 2 times
-Looped 3 times
-Because i is no longer less than 3, the while statement stopped looping.</code></div>
+Loop number 0
+Loop number 1
+Loop number 2
+Because i is no longer less than 3, the for statement stopped looping.</code></div>
                     </details>
                 </div>
                 <h2 id="tut1.5">1.5 Methods</h2>
@@ -544,7 +545,7 @@ A</code></div>
                     </details>
                     <p>
                         Because the <code>printAnA</code> method is called within the <code>main</code> method, its code runs. <br>
-                        You may be wondering what's with the parenthesis. Well, methods can have what are called parameters within those parenthesis. These parameters are values passed into the method from the method call. Again like in Algebra class, you can think of it like the x in a function f(x). You set x equal to a value which is then passed into the function f. When you call a method with one <code>int</code> parameter, rather than writing, for example, <code>myMethod();</code>, you could write <code>myMethod(1);</code> to set the <code>int</code> to <code>1</code>. Here's an example of a method with a parameter.
+                        You may be wondering what's with the parenthesis. Well, methods can have what are called parameters within those parenthesis. These parameters are values passed into the method from the method call. Again like in Algebra class, you can think of it like the x in a function f(x). You set x equal to a value which is then passed into the function f. When you call a method with one <code>int</code> parameter, rather than writing, for example, <code>myMethod();</code>, you could write <code>myMethod(1);</code> to set the <code>int</code> variable to <code>1</code>. Here's an example of a method with a parameter.
                     </p>
                     <div class="codebgsmall">
 <code style="white-space: pre-wrap;">
@@ -681,11 +682,13 @@ public class MyProgram {
 <code style="white-space: pre-wrap;">
 public class MyProgram {
     public static int number = 0;
+    public static String str = "Test";
     public static void main(String[] args) {
         increment();
         increment();
         decrement();
         System.out.println(number);
+        System.out.println(str);
     }
     public static void increment () {
         number++;
@@ -699,16 +702,52 @@ public class MyProgram {
                         <summary>Output</summary>
                         <div class="codebgsmall">
 <code style="white-space: pre-wrap;">
-1</code></div>
+1
+Test</code></div>
                     </details>
 
 
                 </div>
-                
-                    
+                <h2 id="tut1.7">1.7 Variable Types</h2>
+                <div class="empty">
+                    <p>
+                        Before we move on to using Java with FTC, there's one more thing to go over--the difference between a primitve and reference type variable. <br><br> You may have noticed that the names of most variables like <code>int</code>s, <code>double</code>s, and <code>boolean</code>s begin with a lowercase letter, while <code>String</code>s begin with an uppercase one. This has to do with the way computers store variable information. <code>int</code>s, for example, are primitive, meaning <code>int</code> variables literally store their values within themselves, exactly the way you would expect a variable to. You can think of a primitive variable as a box that stores its value. <br><br>Reference variables like <code>String</code>s, on the other hand, are a little more complicated. Instead of the variable storing the actual <code>String</code> value, it stores an address to the <code>String</code> within the computer's memory. You can think of a reference variable as a note directing you to the location of a box rather than the box itself.
+                    </p>
+                    <img src="../images/variables_diagram.png" width="550px" height="360px">
+                    <p>
+                        This distinction may seem trivial at first, but it has some important implications, especially in FTC but also with Java in general. For example, the <code>==</code> operator doesn't always work on <code>String</code>s. This is because even if the value of the <code>String</code>s themselves are the same, they are sometimes referring to separate "boxes" that are stored in different places in the computer's memory. When you use <code>==</code>, it compares the values of the variables themselves and not the values that they direct to, so comparing two separate <code>String</code>s that have the same value will still return <code>false</code>. <br><br> To compare <code>String</code>s by the values they direct to, use the <code>equals()</code> method built into all reference-type variables.
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        String a = new String("ABC");
+        String b = new String("ABC");
+        String c = a;
+        
+        System.out.println(a == b);
+        System.out.println(a == c);
+        System.out.println(a.equals(b));
+        System.out.println(a.equals(c));
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+false
+true
+true
+true</code></div>
+                    </details>
+                    <p>
+                        Although in some cases it won't make a difference, it's generally good practice to use the <code>equals()</code> method for reference-type variables rather than <code>==</code>.<br>
+                    </p>
+                </div>
             </div>
         </div>
-        <div style="margin-left: 190px; margin-bottom: 12px; padding-left: 50px; padding-right: 50px; border-style: solid;" class="bg">
+        <div style="margin-left: 210px; margin-bottom: 12px; padding-left: 50px; padding-right: 50px; border-style: solid;" class="bg">
             <h1 id="tut2">2. Java in FTC</h1>
             <div class="empty">
                 <p>

@@ -49,7 +49,7 @@ div {
 }
 
 .sidebar {
-    height: 350px;
+    height: 325px;
     width: 170px;
     position: -webkit-sticky; /* for Safari users */
     position: sticky;
