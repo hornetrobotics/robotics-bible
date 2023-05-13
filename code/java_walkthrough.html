@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <head>
-    <title>the holmdel robotics bible | code archive</title>
+    <title>the holmdel robotics bible | coding resources</title>
     <link rel="stylesheet" href="../default.css">
 </head>
 
 <body class="shadowed-bg" style="margin-top:0px">
     <header class="bg" style="margin-top: -20px; padding-top: 20px; padding-bottom: 8px; margin-left: -8px; margin-right: -8px;">
-        <h1 style="margin-bottom: 20px;">the holmdel robotics bible <sub>code archive</sub></h1>
+        <h1 style="margin-bottom: 20px;">the holmdel robotics bible <sub>coding resources</sub></h1>
         <nav>
             <span><a href="../index.html">home</a></span>
             <span> | </span>
@@ -14,7 +14,7 @@
             <span> | </span>
             <span><a href="../">for new captains</a></span>
             <span> | </span>
-            <span><a href="../code_archive.html">code archive</a></span>
+            <span><a href="./coding_resources.html">coding resources</a></span>
             <span> | </span>
             <span><a href="../">hall of fame</a></span>
             <span> | </span>
@@ -35,13 +35,14 @@
         • <a href="#tut1.2.4">Booleans</a>
     <a href="#tut1.3">1.3 If Statements</a>
     <a href="#tut1.4">1.4 Loops</a>
-    1.5 Methods
+    <a href="#tut1.5">1.5 Methods</a>
+    <a href="#tut1.6">1.6 Instance Variables</a>
 <a href="#tut2">2. Java in FTC</a>
 </p>
 
         </div>
 
-        <div style="margin-left: 190px; margin-bottom: 12px; padding-left: 50px; padding-right: 50px; border-style: solid;" class="bg">
+        <div style="margin-left: 210px; margin-bottom: 12px; padding-left: 50px; padding-right: 50px; border-style: solid;" class="bg">
             <h1 id="tut1">1. Java Introduction</h1>
             <div class="empty">
                 <p>
@@ -356,6 +357,7 @@ public class MyProgram {
 <code style="white-space: pre-wrap;">
 false</code></div>
                     </details>
+                    
                     <p>
                         Variables are vital to coding in Java (and coding languages in general), so it's important to understand this lesson before moving on to the next.
                     </p>
@@ -468,7 +470,9 @@ Because i is no longer less than 3, the while statement stopped looping.</code><
                         A <code>for</code> loop has three conditions within its parenthesis as opposed to one in <code>if</code> and <code>while</code> statements. The first condition is creating a 'counter' variable which usually begins at zero. The second condition is setting an end point for the looping with a boolean expression using the counter variable, just like how you do it in a <code>while</code> statement. The third condition is for incrementing the counter at the end of each loop. <code>for</code> loops may look complicated, but they're pretty simple once you're used to them and are very important for condensing <code>while</code> loop code.
                     </p>
                     <img src="../images/for_loop_diagram.png" width="500px" height="250px">
-                    <p>Here's the previous example rewritten as a <code>for</code> loop:</p>
+                    <p>
+                        Here's the previous example rewritten as a <code>for</code> loop:
+                    </p>
                     <div class="codebgsmall">
 <code style="white-space: pre-wrap;">
 public class MyProgram {
@@ -489,13 +493,228 @@ Looped 2 times
 Looped 3 times
 Because i is no longer less than 3, the while statement stopped looping.</code></div>
                     </details>
-                    
                 </div>
+                <h2 id="tut1.5">1.5 Methods</h2>
+                <div class="empty">
+                    <p>
+                        Methods are vital to condensing and simplifying code. You can think of a method like a function from Algebra, where you feed in a value and it will output a value based on it. <code>public static void main(String[] args)</code> is a method built-in to Java where your code goes. As a <code>void</code> method it doesn't have an output, but rather runs the code you type inside of it when you hit run. <br>
+                        Methods are created within the class and declared similarly to a variable. The <code>public</code> or <code>private</code> and keywords denote whether a method is accessible from another class, but that isn't really important for the purposes of FTC so we won't touch on that much (same with <code>static</code>). Next the type of value returned by the method is written, for example an <code>int</code>, <code>boolean</code>, <code>String</code>, or <code>void</code> (meaning it doesn't return a value). Then the name of your method is written with parenthesis after it, which will be explained later. Then, brackets are placed around the code the method contains.<br>
+                        <code>public int myMethod () {<br>    //Code goes here<br>}</code> <br>
+                        To create your own method, type the following:
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+
+    }
+
+    public static void printAnA () {
+        System.out.println("A");
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+</code></div>
+                    </details>
+                    <p>
+                        So why didn't the A get printed? Well, remember that only the code within the built-in <code>main</code> method runs when the program starts. Any other method must be 'called' by the programmer in order to run. <br>
+                        To do a method call, you must reference that method within <code>main</code>. Add this to your program:
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        printAnA();
+    }
+
+    public static void printAnA () {
+        System.out.println("A");
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+A</code></div>
+                    </details>
+                    <p>
+                        Because the <code>printAnA</code> method is called within the <code>main</code> method, its code runs. <br>
+                        You may be wondering what's with the parenthesis. Well, methods can have what are called parameters within those parenthesis. These parameters are values passed into the method from the method call. Again like in Algebra class, you can think of it like the x in a function f(x). You set x equal to a value which is then passed into the function f. When you call a method with one <code>int</code> parameter, rather than writing, for example, <code>myMethod();</code>, you could write <code>myMethod(1);</code> to set the <code>int</code> to <code>1</code>. Here's an example of a method with a parameter.
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        incrementThenPrint(3);
+        incrementThenPrint(5);
+    }
+
+    public static void incrementThenPrint (int x) {
+        x++;
+        System.out.println(x);
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+4
+6</code></div>
+                    </details>
+                    <p>
+                        Methods can also have multiple parameters, each separated by a comma.
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        methodA(8, true);
+        methodA(7, false);
+    }
+
+    public static void methodA (int number, boolean bool) {
+        if (bool) {
+            System.out.println(number);
+        } else {
+            System.out.println(number - 2);
+        }
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+8
+5</code></div>
+                    </details>
+
+                    <p>
+                        If you want to make a method return a value, similarly to how f(x) in algebra is equal to a new value based on the value of x, set the method as a type other than <code>void</code>, for example an <code>int</code>, and include a <code>return</code> statment at the end of the method. A <code>return</code> statement tells the computer what value the method call should be equal to using the keyword <code>return</code>, followed by that value. Create a method that returns an <code>int</code> like this:
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        int number = f(3);
+        System.out.println(number);
+    }
+
+    public static int f (int x) {
+        x += 1;
+        return x*2;
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+8</code></div>
+                    </details>
+                </div>
+                <h2 id="tut1.6">1.6 Instance Variables</h2>
+                <div class="empty">
+                    <p>
+                        So far we've only been focusing on code within the methods, but now let's take a look at the class as a whole.<br>
+                        In order to understand how classes work, you need to understand scope. Take this code segment, for example:
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        boolean bool = true;
+        if (bool) {
+            int num = 0;
+        } else {
+            int num = 3;
+        }
+        System.out.println(num);
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+MyProgram.java:7: error: cannot find symbol
+        System.out.println(num);
+                           ^
+    symbol: variable num
+    location: class MyProgram
+1 error</code></div>
+                    </details>
+                    <p>
+                        So why did it cause an error when <code>num</code> is defined? Well, it's important to know and remember that <b>A variable defined within a set of brackets is only accessible within those brackets</b>. In this instance, the variable <code>num</code> is defined within the <code>if</code> statement, but the <code>println</code> statement is outside of it. An error is caused because as far as any code segment outside of the <code>if</code> statement can tell, <code>num</code> doesn't exist. You can solve this problem by moving the declaration of it outside of the <code>if</code> statement, like this:
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static void main(String[] args) {
+        boolean bool = true;
+        int num = 0;
+        if (bool) {
+            num = 0;
+        } else {
+            num = 3;
+        }
+        System.out.println(num);
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+0</code></div>
+                    </details>
+                    <p>
+                        This raises a problem. What if two separate methods need to be able to access the same variable? You actually solve this the same way you'd solve the previous one--move the variable declaration outside of the method and directly into the <code>class</code>. The only difference is that you must declare the variable with a <code>public</code> or <code>private</code> keyword (generally just stick with <code>private</code> except in situations where a <code>public</code> variable is necessary. Again, it's not that important what that means for FTC, so for the sake of keeping this tutorial short I won't go into that).
+                    </p>
+<div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+public class MyProgram {
+    public static int number = 0;
+    public static void main(String[] args) {
+        increment();
+        increment();
+        decrement();
+        System.out.println(number);
+    }
+    public static void increment () {
+        number++;
+    }
+    public static void decrement () {
+        number--;
+    }
+}</code>
+                    </div>
+                    <details>
+                        <summary>Output</summary>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+1</code></div>
+                    </details>
+
+
+                </div>
+                
+                    
             </div>
         </div>
         <div style="margin-left: 190px; margin-bottom: 12px; padding-left: 50px; padding-right: 50px; border-style: solid;" class="bg">
             <h1 id="tut2">2. Java in FTC</h1>
-            <p>hi</p>
+            <div class="empty">
+                <p>
+                    Now that you have a general understanding of Java, let's move on to utilizing it within FTC.
+                </p>
+            </div>
         </div>
     </div>
     </div>

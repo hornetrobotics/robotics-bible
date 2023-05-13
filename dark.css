@@ -49,8 +49,8 @@ div {
 }
 
 .sidebar {
-    height: 250px;
-    width: 150px;
+    height: 350px;
+    width: 170px;
     position: -webkit-sticky; /* for Safari users */
     position: sticky;
     top: 0px;
