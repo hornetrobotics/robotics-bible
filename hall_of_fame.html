@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<head>
+    <title>the holmdel robotics bible | hall of fame</title>
+    <link rel="stylesheet" href="./css/default.css">
+</head>
+
+<body class="shadowed-bg" style="margin-top:0px">
+    <header class="bg" style="margin-top: -20px; padding-top: 20px; padding-bottom: 8px; margin-left: -8px; margin-right: -8px;">
+        <h1 style="margin-bottom: 20px;">the holmdel robotics bible <sub>hall of fame</sub></h1>
+        <nav>
+            <span><a href="./index.html">home</a></span>
+            <span> | </span>
+            <span><a href="./new_members.html">for new team members</a></span>
+            <span> | </span>
+            <span><a href="./">for new captains</a></span>
+            <span> | </span>
+            <span><a href="./coding_resources.html">coding resources</a></span>
+            <span> | </span>
+            <span><a href="./hall_of_fame.html">hall of fame</a></span>
+            <span> | </span>
+            <span><button style="margin-top: 10px;" onclick="toggleTheme()"><u>toggle dark mode</u></button></span>
+        </nav>
+    </header>
+    
+    <hr style="margin-top: 0px; margin-bottom: 12px;">
+
+        <div style="margin-left: 210px; margin-right: 210px; margin-bottom: 12px; padding-left: 50px; padding-right: 50px; border-style: solid;" class="bg">
+            <a href="./hall-of-fame/2023-2024.html"><img class="center" width="675px" height="540px" src="./images/team-photos/2022-2023/???.jpg"></a>
+            <h1 id="tut1">2023-2024</h1>
+            <h2 style="text-align: center; font-family: 'Fordscript';">" Coming Soon "</h2>
+        </div>
+
+        <div style="margin-left: 210px; margin-right: 210px; margin-bottom: 12px; padding-left: 50px; padding-right: 50px; border-style: solid;" class="bg">
+            <a href="./hall-of-fame/2022-2023.html"><img class="center" width="675px" height="540px" src="./images/team-photos/2022-2023/IMG_3296.jpg"></a>
+            <h1 id="tut1">2022-2023</h1>
+            <h2 style="text-align: center; font-family: 'Fordscript';">" The Enlightenment "</h2>
+        </div>
+
+        <div style="margin-left: 210px; margin-right: 210px; margin-bottom: 12px; padding-left: 50px; padding-right: 50px; border-style: solid;" class="bg">
+            <img class="center" width="675px" height="540px" src="./images/team-photos/2022-2023/IMG_1932.jpg">
+            <h1 id="tut1">2021-2022</h1>
+            <h2 style="text-align: center; font-family: 'Fordscript';">" The Dark Ages "</h2>
+        </div>
+    </div>
+    </div>
+
+    <footer class="bg" style="margin-bottom: -8px; margin-left: -8px; margin-right: -8px;">
+        <hr>
+        <div>
+            <img src="./images/hornet_logo_black.png" id="logo" alt="holmdel robotics hornet logo" style="width:100px;height:100px;" class="center">
+        </div>
+        <div class="badges">
+            <img src="././images/badges/button_copy16.png" alt="the frog" style="width:80px;height:15px;">
+            <img src="././images/badges/button_copy9.gif" alt="funky shirts" style="width:80px;height:15px;">
+            <img src="././images/badges/spongebob.gif" alt="sponge bob" style="width:80px;height:15px;">
+            <img src="././images/badges/nb2_copy1.gif" alt="nice" style="width:80px;height:15px;">
+            <img src="././images/badges/logitech.gif" alt="thank you logitech for bankrolling me (real)" style="width:80px;height:15px;">
+            <img src="././images/badges/loveani.gif" alt="be who you are" style="width:80px;height:15px;">
+            <img src="././images/badges/autumn.gif" alt="me!!!" style="width:80px;height:15px;">
+            <img src="././images/badges/clickherebtn.gif" alt="click here" style="width:80px;height:15px;">
+            <img src="././images/badges/give_blood.gif" alt="give blood" style="width:80px;height:15px;">
+            <img src="././images/badges/8015_familyguy.png" alt="family guy" style="width:80px;height:15px;">
+            <img src="././images/badges/infp.gif" alt="im an infp" style="width:80px;height:15px;">
+            <img src="././images/badges/savewater.gif" alt="save water" style="width:80px;height:15px;">
+            <img src="././images/badges/luvsoaps.gif" alt="i <3 soaps" style="width:80px;height:15px;">            
+        </div>        
+        
+    </footer>
+
+    <script>
+        if (window.localStorage.getItem('theme') == 'default') {
+            setTheme('./css/default.css');
+        } else {
+            setTheme('./css/dark.css');
+        }
+
+        function toggleTheme() {
+            if (window.localStorage.getItem('theme') == 'default') {
+                setTheme('./css/dark.css');
+                window.localStorage.setItem('theme', 'dark');
+            } else {
+                setTheme('./css/default.css');
+                window.localStorage.setItem('theme', 'default');
+            }
+        }
+
+        function setTheme(x) {
+            var get = document.getElementById('logo');
+            var theme = document.getElementsByTagName('link')[0];
+            theme.setAttribute('href', x);
+            if (x == './css/default.css') {
+                get.src = "./images/hornet_logo_black.png";
+            } else {
+                get.src = "./images/hornet_logo_white.png";
+            }
+        }
+    </script>
+</body>

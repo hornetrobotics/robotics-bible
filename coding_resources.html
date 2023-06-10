@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <title>the holmdel robotics bible | coding resources</title>
-    <link rel="stylesheet" href="default.css">
+    <link rel="stylesheet" href="./css/default.css">
 </head>
 
 <body>
@@ -16,7 +16,7 @@
             <span> | </span>
             <span><a href="./coding_resources.html">coding resources</a></span>
             <span> | </span>
-            <span><a href="./">hall of fame</a></span>
+            <span><a href="./hall_of_fame.html">hall of fame</a></span>
             <span> | </span>
             <span><button style="margin-top: 10px;" onclick="toggleTheme()"><u>toggle dark mode</u></button></span>
         </nav>
@@ -26,7 +26,7 @@
 
     <div>
         <a href="./code/java_walkthrough.html">Java Walkthrough</a> <br>
-        <a href="./code/teleop_sample.html">Basic TeleOP Sample Program</a>
+        <a href="./code_archive.html">Code Archive</a>
     </div>
 
     <footer>
@@ -53,17 +53,17 @@
 
     <script>
         if (window.localStorage.getItem('theme') == 'default') {
-            setTheme('default.css');
+            setTheme('./css/default.css');
         } else {
-            setTheme('dark.css');
+            setTheme('./css/dark.css');
         }
 
         function toggleTheme() {
             if (window.localStorage.getItem('theme') == 'default') {
-                setTheme('dark.css');
+                setTheme('./css/dark.css');
                 window.localStorage.setItem('theme', 'dark');
             } else {
-                setTheme('default.css');
+                setTheme('./css/default.css');
                 window.localStorage.setItem('theme', 'default');
             }
         }
@@ -72,7 +72,7 @@
             var get = document.getElementById('logo');
             var theme = document.getElementsByTagName('link')[0];
             theme.setAttribute('href', x);
-            if (x == 'default.css') {
+            if (x == './css/default.css') {
                 get.src = "./images/hornet_logo_black.png";
             } else {
                 get.src = "./images/hornet_logo_white.png";
