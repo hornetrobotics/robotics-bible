@@ -785,7 +785,11 @@ true</code></div>
                 <img width="225px" height="450px" src="../images/java-walkthrough/psc3.png">
                 <img width="225px" height="450px" src="../images/java-walkthrough/psc4.png">
                 <p>
-                    Just to get you introduced to FTC coding, we'll start out simple. connect a servo to your Control Hub in servo port 0. Enter the "Servos" menu, then select the dropdown menu for slot zero and select "Servo". Now, the phone (and by extension your code) will be able to recognize that a servo is connected.
+                    Just to get you introduced to FTC coding, we'll start out simple. connect a servo to your Control Hub in servo port 0.
+                </p>
+                <img width="600px" height="400px" src="../images/java-walkthrough/circuit.jpg">
+                <p>
+                    Enter the "Servos" menu, then select the dropdown menu for slot zero and select "Servo". Now, the phone (and by extension your code) will be able to recognize that a servo is connected in that port.
                 </p>
                 <img width="225px" height="450px" src="../images/java-walkthrough/psc5.png">
                 <img width="225px" height="450px" src="../images/java-walkthrough/psc7.png">
@@ -799,6 +803,22 @@ true</code></div>
                 </p>
                 <img width="225px" height="450px" src="../images/java-walkthrough/psc10.png">
                 <img width="225px" height="450px" src="../images/java-walkthrough/psc11.png">
+                <p>
+                    Now, back on the computer, your new program should look something like this:
+                </p>
+                <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+@TeleOp
+
+public class TeleOpProgram {
+    
+    //todo: write your code here
+}</code>
+                    </div>
             </div>
         </div>
     </div>
@@ -829,7 +849,7 @@ true</code></div>
 
     <script>
         if (window.localStorage.getItem('theme') == 'default') {
-            setTheme('../css/default.css');
+            setTheme('../css/boring.css');
         } else {
             setTheme('../css/dark.css');
         }

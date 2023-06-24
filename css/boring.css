@@ -1,0 +1,198 @@
+body {background-color: rgb(23, 23, 23);}
+h1 {text-align: center; color: rgb(255, 255, 255);}
+h2 {color: rgb(255, 255, 255);}
+h3 {color: rgb(255, 255, 255);}
+p {color: rgb(255, 255, 255);}
+code {color: rgb(255, 255, 255); background-color: rgb(12, 12, 12);}
+a {text-align: center; color: rgb(255, 255, 255);}
+span {color: rgb(255, 255, 255);}
+
+details {color: rgb(255, 255, 255);}
+
+nav {text-align: center;}
+hr{
+    height: 1px;
+    background-color: rgb(255, 255, 255);
+    border: none;
+}
+div {  
+    padding-left: 100px; 
+    padding-right: 100px;  
+    border-color: rgb(255, 255, 255);
+    border-width: 3px;
+    border-style: none;
+}  
+.center {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.badges {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    padding: 0px;
+    text-align: center;
+}
+.codebg {
+    background-color: rgb(12, 12, 12);
+}
+
+.codebgsmall {
+    background-color: rgb(12, 12, 12);
+    padding-top: 0px;
+    padding-left: 20px; 
+    padding-right: 20px; 
+    padding-bottom: 15px; 
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.sidebar {
+    height: 325px;
+    width: 170px;
+    position: -webkit-sticky; /* for Safari users */
+    position: sticky;
+    top: 0px;
+    float: left;
+    margin-top: 0px;
+    padding-top: 2px;
+    background-color: rgb(23, 23, 23);
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 3px;
+    padding-left: 10px; 
+    padding-right: 10px; 
+}
+    
+.sidebar div {
+    padding: 8px;
+    font-size: 24px;
+    display: block;
+}
+    
+.body-text {
+    margin-right: 5px;
+}
+
+.empty {
+    padding-left: 0px; 
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;  
+    margin: 0px;
+    border-style: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.shadowed-bg {
+    background-color: rgb(5, 5, 5);
+}
+
+.bg {
+    background-color: rgb(23, 23, 23);
+}
+
+button {
+    font-family: initial; 
+    font-size: initial;
+    padding: 0px;
+    margin: 0px;
+    background-color: rgb(23, 23, 23);
+    border-style: none;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+@font-face {
+    font-family: 'Fordscript';
+    src: url('./Fordscript.ttf');
+}
+
+.column-left {
+    box-sizing: border-box;
+    float: left;
+    width: 49%;
+    background-color: rgb(23, 23, 23);
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 3px;
+    margin-right: 3px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.column-right {
+    box-sizing: border-box;
+    float: right;
+    width: 49%;
+    background-color: rgb(23, 23, 23);
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 3px;
+    margin-left: 3px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    box-sizing: border-box;
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.stroke
+{
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
+}
+
+.strokeblack
+{
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
+}
+
+.table {
+    box-sizing: border-box;
+    padding-left: 0px; 
+    padding-right: 0px; 
+    display: table; 
+    margin: 0 auto;
+    
+}
+
+.table-element {
+    box-sizing: border-box;
+    background-color: rgb(23, 23, 23);
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 3px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.table-column {
+    box-sizing: border-box;
+    background-color: rgb(23, 23, 23);
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 3px;
+    display: inline-block;
+    padding-left: 25px;
+    padding-right: 25px;
+    vertical-align: top;
+}
