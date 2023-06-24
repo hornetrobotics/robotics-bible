@@ -761,15 +761,15 @@ true</code></div>
                 <p>
                     First you need to connect your computer to your robot's WiFi. The name should look something like 19735-RC or 22261-RC, depending on your own team number, and the password is (hopefully still) <code>takeflighthornets</code>. Once you're connected, open the link <a href="http://192.168.43.1:8080" target="_blank">http://192.168.43.1:8080</a> and you should see a screen like this:
                 </p>
-                <img width="80%" height="80%" src="../images/java-walkthrough/sc0.png">
+                <img width="1024px" height="563px" src="../images/java-walkthrough/sc0.png">
                 <p>
                     Click the "OnBotJava" tab on the top of the page and select the + button to create a new Java program.
                 </p>
-                <img width="80%" height="80%" src="../images/java-walkthrough/sc1.png">
+                <img width="1024px" height="563px" src="../images/java-walkthrough/sc1.png">
                 <p>
                     Give your new program a name.and select a type. There are two types of programs in FTC: TeleOP and Autonomous. TeleOP, also called Driver Control, is a mode in which the robot is driven with a controller, and in Autonomous mode the robot moves on its own. In this guide, we'll exemplify our setup by writing a TeleOP program.
                 </p>
-                <img width="80%" height="80%" src="../images/java-walkthrough/sc2.png">
+                <img width="1024px" height="563px" src="../images/java-walkthrough/sc2.png">
                 <p>
                     Click 'OK'. <br> Next, you're going to need one of the classroom Android phones. These phones have the FTC Driver Station app that controls the robot remotely. This is the device from which you select the program on the robot that you want to run, and what you plug the controller into during TeleOP. The phone has one other important function--to 'name' each device connected to the robot in what's called a configuration file. <br>
                     First, ensure your phone is connected to your robot's WiFi. Open the FTC Driver Station app and click the ⋮ button, then select "Configure Robot" in the dropdown menu.
@@ -804,7 +804,7 @@ true</code></div>
                 <img width="225px" height="450px" src="../images/java-walkthrough/psc10.png">
                 <img width="225px" height="450px" src="../images/java-walkthrough/psc11.png">
                 <p>
-                    Now, back on the computer, your new program should look something like this:
+                    Back on the computer, your new program should look something like this:
                 </p>
                 <div class="codebgsmall">
 <code style="white-space: pre-wrap;">
@@ -818,7 +818,85 @@ public class TeleOpProgram {
     
     //todo: write your code here
 }</code>
-                    </div>
+                </div>
+                <p>
+                    The main method of an FTC Java program is written as <code>public void runOpMode()</code> rather than <code>public static void main (String args[])</code> (Note that since the main method isn't <code>static</code>, you won't have to make other methods <code>static</code> either). Create this method, then create a <code>Servo</code> instance variable. This reference-type variable holds an 'address' to the servo that you just registered within the configuration file. to do this, set the servo variable equal to <code>hardwareMap.servo.get(/*name of servo in configuration file*/);</code>. Here's a breakdown of what this line means.
+                </p>
+                <img width="400px" height="300px" src="../images/java-walkthrough/hardwaremap.png">
+
+                <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+@TeleOp
+
+public class TeleOpProgram {
+    private Servo servo;
+
+    public void runOpMode() {
+        servo = hardwareMap.servo.get("myServo");
+    }
+}</code>
+                </div>
+                <p>
+                    In FTC, there are two stages to running a program, initialization and start. Setting up variables like what we've done so far here should take place during initialization, while code that actively runs in real-time should happen after start. The built-in method <code>waitForStart()</code> pauses the program once the line containing it is reached, unpausing once the initialization is over and the start button is pressed. This means that everything in the method before <code>waitForStart()</code> happens in initialization, and everything after it happens while the program runs. <br>
+                    During TeleOP, code which checks for input from the controller should loop indefinitely until the program ends. If this code isn't looped, then it would only ever do one 'check' at the very start of the program, meaning it wouldn't register that you ever provided any input after that initial first check. As you learned in the previous tutorial, <code>while</code> loops are necessary for creating indefinitely long code repetition. Another built-in method, <code>opModeIsActive()</code>, returns <code>true</code> for as long as the program has been started and is running.
+                </p>
+                <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+@TeleOp
+
+public class TeleOpProgram {
+    private Servo servo;
+
+    public void runOpMode() {
+        servo = hardwareMap.servo.get("myServo");
+
+        waitForStart();
+
+        while (opModeIsActive()) {
+            //to be implemented
+        }
+    }
+}</code>
+                </div>
+                <p>
+                    Next, we need to create the check for input using an <code>if</code> statement. Use <code>gamepad1./*controller input being read for*/</code>, using the following diagram:
+                </p>
+                <img width="600px" height="400px" src="../images/java-walkthrough/controller.jpg">
+                <p>
+                    to change the position of your servo, use the built-in <code>setPosition(double pos)</code> servo method, which has one <code>double</code> parameter. <code>0.0</code> and <code>1.0</code> are the left and right limits of the servo's angular rotation, and decimals may also be entered.
+                </p>
+                <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+@TeleOp
+
+public class TeleOpProgram {
+    private Servo servo;
+
+    public void runOpMode() {
+        servo = hardwareMap.servo.get("myServo");
+
+        waitForStart();
+
+        while (opModeIsActive()) {
+            if (gamepad1.a) {
+                servo.setPosition(0.5);
+            }
+        }
+    }
+}</code>
+                </div>
             </div>
         </div>
     </div>
@@ -829,38 +907,77 @@ public class TeleOpProgram {
         <div>
             <img src="./images/hornet_logo_black.png" id="logo" alt="holmdel robotics hornet logo" style="width:100px;height:100px;" class="center">
         </div>
-        <div class="badges">
-            <img src=".././images/badges/button_copy16.png" alt="the frog" style="width:80px;height:15px;">
-            <img src=".././images/badges/button_copy9.gif" alt="funky shirts" style="width:80px;height:15px;">
-            <img src=".././images/badges/spongebob.gif" alt="sponge bob" style="width:80px;height:15px;">
-            <img src=".././images/badges/nb2_copy1.gif" alt="nice" style="width:80px;height:15px;">
-            <img src=".././images/badges/logitech.gif" alt="thank you logitech for bankrolling me (real)" style="width:80px;height:15px;">
-            <img src=".././images/badges/loveani.gif" alt="be who you are" style="width:80px;height:15px;">
-            <img src=".././images/badges/autumn.gif" alt="me!!!" style="width:80px;height:15px;">
-            <img src=".././images/badges/clickherebtn.gif" alt="click here" style="width:80px;height:15px;">
-            <img src=".././images/badges/give_blood.gif" alt="give blood" style="width:80px;height:15px;">
-            <img src=".././images/badges/8015_familyguy.png" alt="family guy" style="width:80px;height:15px;">
-            <img src=".././images/badges/infp.gif" alt="im an infp" style="width:80px;height:15px;">
-            <img src=".././images/badges/savewater.gif" alt="save water" style="width:80px;height:15px;">
-            <img src=".././images/badges/luvsoaps.gif" alt="i <3 soaps" style="width:80px;height:15px;">            
-        </div>        
         
+        <div class="badges">
+            <img src="../images/badges/button_copy16.png" class="boring-hide" alt="the frog" style="width:80px;height:15px;">
+            <img src="../images/badges/button_copy9.gif" class="boring-hide" alt="funky shirts" style="width:80px;height:15px;">
+            <img src="../images/badges/spongebob.gif" class="boring-hide" alt="sponge bob" style="width:80px;height:15px;">
+            <img src="../images/badges/nb2_copy1.gif" class="boring-hide" alt="nice" style="width:80px;height:15px;">
+            <img src="../images/badges/logitech.gif" class="boring-hide" alt="thank you logitech for bankrolling me (real)" style="width:80px;height:15px;">
+            <img src="../images/badges/loveani.gif" class="boring-hide" alt="be who you are" style="width:80px;height:15px;">
+            <button onclick="toggleBoring()"><img src="../images/badges/clickherebtn.gif" alt="click here" style="width:80px;height:15px;"></button>
+            <img src="../images/badges/autumn.gif" class="boring-hide" alt="me !!!" style="width:80px;height:15px;">
+            <img src="../images/badges/give_blood.gif" class="boring-hide" alt="give blood" style="width:80px;height:15px;">
+            <img src="../images/badges/8015_familyguy.png" class="boring-hide" alt="family guy" style="width:80px;height:15px;">
+            <img src="../images/badges/infp.gif" class="boring-hide" alt="im an infp" style="width:80px;height:15px;">
+            <img src="../images/badges/savewater.gif" class="boring-hide" alt="save water" style="width:80px;height:15px;">
+            <img src="../images/badges/luvsoaps.gif" class="boring-hide" alt="i <3 soaps" style="width:80px;height:15px;">            
+        </div>        
     </footer>
 
     <script>
-        if (window.localStorage.getItem('theme') == 'default') {
-            setTheme('../css/boring.css');
+        if (window.localStorage.getItem('boring') == 'true') {
+            if (window.localStorage.getItem('theme') == 'default') {
+                setTheme('../css/boring.css');
+            } else {
+                setTheme('../css/boring_dark.css');
+            }
         } else {
-            setTheme('../css/dark.css');
+            if (window.localStorage.getItem('theme') == 'default') {
+                setTheme('../css/default.css');
+            } else {
+                setTheme('../css/dark.css');
+            }
         }
+        
 
         function toggleTheme() {
-            if (window.localStorage.getItem('theme') == 'default') {
-                setTheme('../css/dark.css');
-                window.localStorage.setItem('theme', 'dark');
+            if (window.localStorage.getItem('boring') == 'true') {
+                if (window.localStorage.getItem('theme') == 'default') {
+                    setTheme('../css/boring_dark.css');
+                    window.localStorage.setItem('theme', 'dark');
+                } else {
+                    setTheme('../css/boring.css');
+                    window.localStorage.setItem('theme', 'default');
+                }
             } else {
-                setTheme('../css/default.css');
-                window.localStorage.setItem('theme', 'default');
+                if (window.localStorage.getItem('theme') == 'default') {
+                    setTheme('../css/dark.css');
+                    window.localStorage.setItem('theme', 'dark');
+                } else {
+                    setTheme('../css/default.css');
+                    window.localStorage.setItem('theme', 'default');
+                }
+            }
+        }
+
+        function toggleBoring() {
+            if (window.localStorage.getItem('boring') == 'true') {
+                if (window.localStorage.getItem('theme') == 'default') {
+                    setTheme('../css/default.css');
+                } else {
+                    setTheme('../css/dark.css');
+                }
+                window.localStorage.setItem('boring', 'false');
+                alert("boring mode deactivated");
+            } else {
+                if (window.localStorage.getItem('theme') == 'default') {
+                    setTheme('../css/boring.css');
+                } else {
+                    setTheme('../css/boring_dark.css');
+                }
+                window.localStorage.setItem('boring', 'true');
+                alert("boring mode activated");
             }
         }
 
@@ -868,10 +985,10 @@ public class TeleOpProgram {
             var get = document.getElementById('logo');
             var theme = document.getElementsByTagName('link')[0];
             theme.setAttribute('href', x);
-            if (x == '../css/default.css') {
-                get.src = ".././images/hornet_logo_black.png";
+            if (x == '../css/default.css' || x == '../css/boring.css') {
+                get.src = "../images/hornet_logo_black.png";
             } else {
-                get.src = ".././images/hornet_logo_white.png";
+                get.src = "../images/hornet_logo_white.png";
             }
         }
     </script>

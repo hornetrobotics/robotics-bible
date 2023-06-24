@@ -1,25 +1,38 @@
-body {background-color: rgb(182, 189, 252);}
-h1 {text-align: center; color: rgb(37, 42, 82);}
-h2 {color: black;}
-h3 {color: black;}
-p {color: black;}
-code {color: black; background-color: rgb(164, 172, 241);}
-a {text-align: center; color: rgb(39, 45, 102)}
-span {color: black;}
+body {background-color: rgb(23, 23, 23);}
+h1 {text-align: center; color: rgb(255, 255, 255); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+h2 {color: rgb(255, 255, 255); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+h3 {color: rgb(255, 255, 255); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+p {color: rgb(255, 255, 255); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+code {color: rgb(255, 255, 255); background-color: rgb(12, 12, 12);}
+a {text-align: center; color: rgb(89, 128, 255); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+span {color: rgb(255, 255, 255); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
 
-details {color: rgb(37, 42, 82);}
+details {color: rgb(255, 255, 255); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
 
 nav {text-align: center;}
 hr{
     height: 1px;
-    background-color: rgb(94, 103, 184);
+    background-color: rgb(255, 255, 255);
     border: none;
 }
+
+button {
+    font-family: initial; 
+    font-size: initial;
+    padding: 0px;
+    margin: 0px;
+    background-color: rgb(23, 23, 23);
+    border-style: none;
+    color: rgb(89, 128, 255);
+    cursor: pointer;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 div {  
     padding-left: 100px; 
     padding-right: 100px;  
-    border-color: rgb(94, 103, 184);
-    border-width: 3px;
+    border-color: rgb(255, 255, 255);
+    border-width: 0px;
     border-style: none;
 }  
 .center {
@@ -36,11 +49,11 @@ div {
     text-align: center;
 }
 .codebg {
-    background-color: rgb(164, 172, 241);
+    background-color: rgb(12, 12, 12);
 }
 
 .codebgsmall {
-    background-color: rgb(164, 172, 241);
+    background-color: rgb(12, 12, 12);
     padding-top: 0px;
     padding-left: 20px; 
     padding-right: 20px; 
@@ -58,10 +71,10 @@ div {
     float: left;
     margin-top: 0px;
     padding-top: 2px;
-    background-color: rgb(192, 198, 255);
-    border-color: rgb(94, 103, 184);
+    background-color: rgb(23, 23, 23);
+    border-color: rgb(255, 255, 255);
     border-style: solid;
-    border-width: 3px;
+    border-width: 0px;
     padding-left: 10px; 
     padding-right: 10px; 
 }
@@ -90,23 +103,14 @@ html {
 }
 
 .shadowed-bg {
-    background-color: rgb(146, 156, 228);;
+    background-color: rgb(23, 23, 23);
 }
 
 .bg {
-    background-color: rgb(182, 189, 252);
+    background-color: rgb(23, 23, 23);
 }
 
-button {
-    font-family: initial; 
-    font-size: initial;
-    padding: 0px;
-    margin: 0px;
-    background-color: rgb(182, 189, 252);
-    border-style: none;
-    color: rgb(39, 45, 102);
-    cursor: pointer;
-}
+
 
 @font-face {
     font-family: 'Fordscript';
@@ -117,8 +121,8 @@ button {
     box-sizing: border-box;
     float: left;
     width: 49%;
-    background-color: rgb(182, 189, 252);
-    border-color: rgb(94, 103, 184);
+    background-color: rgb(23, 23, 23);
+    border-color: rgb(255, 255, 255);
     border-style: solid;
     border-width: 3px;
     margin-right: 3px;
@@ -129,8 +133,8 @@ button {
     box-sizing: border-box;
     float: right;
     width: 49%;
-    background-color: rgb(182, 189, 252);
-    border-color: rgb(94, 103, 184);
+    background-color: rgb(23, 23, 23);
+    border-color: rgb(255, 255, 255);
     border-style: solid;
     border-width: 3px;
     margin-left: 3px;
@@ -150,20 +154,20 @@ button {
 {
     color: white;
     text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;  
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;  
 }
 
 .strokeblack
 {
     color: white;
     text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000;  
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;  
 }
 
 .table {
@@ -177,8 +181,8 @@ button {
 
 .table-element {
     box-sizing: border-box;
-    background-color: rgb(192, 198, 255);
-    border-color: rgb(94, 103, 184);
+    background-color: rgb(23, 23, 23);
+    border-color: rgb(255, 255, 255);
     border-style: solid;
     border-width: 3px;
     display: inline-block;
@@ -187,12 +191,16 @@ button {
 
 .table-column {
     box-sizing: border-box;
-    background-color: rgb(192, 198, 255);
-    border-color: rgb(94, 103, 184);
+    background-color: rgb(23, 23, 23);
+    border-color: rgb(255, 255, 255);
     border-style: solid;
     border-width: 3px;
     display: inline-block;
     padding-left: 25px;
     padding-right: 25px;
     vertical-align: top;
+}
+
+.boring-hide {
+    visibility: hidden;
 }

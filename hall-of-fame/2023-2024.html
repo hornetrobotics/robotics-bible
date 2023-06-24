@@ -77,37 +77,75 @@ Cras in eros ultrices, hendrerit arcu non, varius arcu. Nunc quis nisi vitae mag
             <img src="./images/hornet_logo_black.png" id="logo" alt="holmdel robotics hornet logo" style="width:100px;height:100px;" class="center">
         </div>
         <div class="badges">
-            <img src=".././images/badges/button_copy16.png" alt="the frog" style="width:80px;height:15px;">
-            <img src=".././images/badges/button_copy9.gif" alt="funky shirts" style="width:80px;height:15px;">
-            <img src=".././images/badges/spongebob.gif" alt="sponge bob" style="width:80px;height:15px;">
-            <img src=".././images/badges/nb2_copy1.gif" alt="nice" style="width:80px;height:15px;">
-            <img src=".././images/badges/logitech.gif" alt="thank you logitech for bankrolling me (real)" style="width:80px;height:15px;">
-            <img src=".././images/badges/loveani.gif" alt="be who you are" style="width:80px;height:15px;">
-            <img src=".././images/badges/autumn.gif" alt="me!!!" style="width:80px;height:15px;">
-            <img src=".././images/badges/clickherebtn.gif" alt="click here" style="width:80px;height:15px;">
-            <img src=".././images/badges/give_blood.gif" alt="give blood" style="width:80px;height:15px;">
-            <img src=".././images/badges/8015_familyguy.png" alt="family guy" style="width:80px;height:15px;">
-            <img src=".././images/badges/infp.gif" alt="im an infp" style="width:80px;height:15px;">
-            <img src=".././images/badges/savewater.gif" alt="save water" style="width:80px;height:15px;">
-            <img src=".././images/badges/luvsoaps.gif" alt="i <3 soaps" style="width:80px;height:15px;">            
+            <img src="../images/badges/button_copy16.png" class="boring-hide" alt="the frog" style="width:80px;height:15px;">
+            <img src="../images/badges/button_copy9.gif" class="boring-hide" alt="funky shirts" style="width:80px;height:15px;">
+            <img src="../images/badges/spongebob.gif" class="boring-hide" alt="sponge bob" style="width:80px;height:15px;">
+            <img src="../images/badges/nb2_copy1.gif" class="boring-hide" alt="nice" style="width:80px;height:15px;">
+            <img src="../images/badges/logitech.gif" class="boring-hide" alt="thank you logitech for bankrolling me (real)" style="width:80px;height:15px;">
+            <img src="../images/badges/loveani.gif" class="boring-hide" alt="be who you are" style="width:80px;height:15px;">
+            <button onclick="toggleBoring()"><img src="../images/badges/clickherebtn.gif" alt="click here" style="width:80px;height:15px;"></button>
+            <img src="../images/badges/autumn.gif" class="boring-hide" alt="me !!!" style="width:80px;height:15px;">
+            <img src="../images/badges/give_blood.gif" class="boring-hide" alt="give blood" style="width:80px;height:15px;">
+            <img src="../images/badges/8015_familyguy.png" class="boring-hide" alt="family guy" style="width:80px;height:15px;">
+            <img src="../images/badges/infp.gif" class="boring-hide" alt="im an infp" style="width:80px;height:15px;">
+            <img src="../images/badges/savewater.gif" class="boring-hide" alt="save water" style="width:80px;height:15px;">
+            <img src="../images/badges/luvsoaps.gif" class="boring-hide" alt="i <3 soaps" style="width:80px;height:15px;">         
         </div>        
-        
     </footer>
 
     <script>
-        if (window.localStorage.getItem('theme') == 'default') {
-            setTheme('../css/default.css');
+        if (window.localStorage.getItem('boring') == 'true') {
+            if (window.localStorage.getItem('theme') == 'default') {
+                setTheme('../css/boring.css');
+            } else {
+                setTheme('../css/boring_dark.css');
+            }
         } else {
-            setTheme('../css/dark.css');
+            if (window.localStorage.getItem('theme') == 'default') {
+                setTheme('../css/default.css');
+            } else {
+                setTheme('../css/dark.css');
+            }
         }
+        
 
         function toggleTheme() {
-            if (window.localStorage.getItem('theme') == 'default') {
-                setTheme('../css/dark.css');
-                window.localStorage.setItem('theme', 'dark');
+            if (window.localStorage.getItem('boring') == 'true') {
+                if (window.localStorage.getItem('theme') == 'default') {
+                    setTheme('../css/boring_dark.css');
+                    window.localStorage.setItem('theme', 'dark');
+                } else {
+                    setTheme('../css/boring.css');
+                    window.localStorage.setItem('theme', 'default');
+                }
             } else {
-                setTheme('../css/default.css');
-                window.localStorage.setItem('theme', 'default');
+                if (window.localStorage.getItem('theme') == 'default') {
+                    setTheme('../css/dark.css');
+                    window.localStorage.setItem('theme', 'dark');
+                } else {
+                    setTheme('../css/default.css');
+                    window.localStorage.setItem('theme', 'default');
+                }
+            }
+        }
+
+        function toggleBoring() {
+            if (window.localStorage.getItem('boring') == 'true') {
+                if (window.localStorage.getItem('theme') == 'default') {
+                    setTheme('../css/default.css');
+                } else {
+                    setTheme('../css/dark.css');
+                }
+                window.localStorage.setItem('boring', 'false');
+                alert("boring mode deactivated");
+            } else {
+                if (window.localStorage.getItem('theme') == 'default') {
+                    setTheme('../css/boring.css');
+                } else {
+                    setTheme('../css/boring_dark.css');
+                }
+                window.localStorage.setItem('boring', 'true');
+                alert("boring mode activated");
             }
         }
 
@@ -115,10 +153,10 @@ Cras in eros ultrices, hendrerit arcu non, varius arcu. Nunc quis nisi vitae mag
             var get = document.getElementById('logo');
             var theme = document.getElementsByTagName('link')[0];
             theme.setAttribute('href', x);
-            if (x == '../css/default.css') {
-                get.src = ".././images/hornet_logo_black.png";
+            if (x == '../css/default.css' || x == '../css/boring.css') {
+                get.src = "../images/hornet_logo_black.png";
             } else {
-                get.src = ".././images/hornet_logo_white.png";
+                get.src = "../images/hornet_logo_white.png";
             }
         }
     </script>
