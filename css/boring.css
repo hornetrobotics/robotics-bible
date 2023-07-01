@@ -1,5 +1,5 @@
 body {background-color: rgb(255, 255, 255);}
-h1 {text-align: center; color: rgb(0, 0, 0); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+h1 {text-align: center; color: rgb(26, 45, 110); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
 h2 {color: rgb(0, 0, 0); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
 h3 {color: rgb(0, 0, 0); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
 p {color: rgb(0, 0, 0); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
@@ -46,6 +46,7 @@ div {
     margin-right: auto;
     width: 90%;
     padding: 0px;
+    padding-top: 15px;
     text-align: center;
 }
 .codebg {
@@ -102,6 +103,8 @@ html {
     scroll-behavior: smooth;
 }
 
+
+
 .shadowed-bg {
     background-color: rgb(255, 255, 255);
 }
@@ -110,9 +113,13 @@ html {
     background-color: rgb(255, 255, 255);
 }
 
-@font-face {
-    font-family: 'Fordscript';
-    src: url('./Fordscript.ttf');
+.div-with-sidebar {
+    background-color: rgb(255, 255, 255);
+    margin-left: 160px; 
+    margin-bottom: 12px; 
+    padding-left: 50px; 
+    padding-right: 50px; 
+    border-style: solid;
 }
 
 .column-left {
@@ -201,4 +208,19 @@ html {
 
 .boring-hide {
     visibility: hidden;
+}
+
+table {
+    border: 1px solid;
+    border-color: black;
+    width: 100%;
+    background-color: rgb(173, 192, 255);
+}
+
+td {
+    border: 1px solid;
+    border-color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 8px;
+    background-color: white;
 }

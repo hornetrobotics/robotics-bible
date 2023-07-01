@@ -40,11 +40,12 @@
     <a href="#tut1.7">1.7 Variable Types</a>
 <a href="#tut2">2. Java in FTC</a>
     <a href="#tut2.1">2.1 Setup</a>
+    <a href="#tut2.2">2.2 Servos</a>
 </p>
 
         </div>
 
-        <div style="margin-left: 210px; margin-bottom: 12px; padding-left: 50px; padding-right: 50px; border-style: solid;" class="bg">
+        <div class="div-with-sidebar">
             <h1 id="tut1">1. Java Introduction</h1>
             <div class="empty">
                 <p>
@@ -748,7 +749,7 @@ true</code></div>
                 </div>
             </div>
         </div>
-        <div style="margin-left: 210px; margin-bottom: 12px; padding-left: 50px; padding-right: 50px; border-style: solid;" class="bg">
+        <div class="div-with-sidebar">
             <h1 id="tut2">2. Java in FTC</h1>
             <div class="empty">
                 <p>
@@ -756,57 +757,60 @@ true</code></div>
                 </p>
                 <h2 id="tut2.1">2.1 Setup</h2>
                 <div class="empty">
-
+                    <p>
+                        First you need to connect your computer to your robot's WiFi. The name should look something like 19735-RC or 22261-RC, depending on your own team number, and the password is (hopefully still) <code>takeflighthornets</code>. Once you're connected, open the link <a href="http://192.168.43.1:8080" target="_blank">http://192.168.43.1:8080</a> and you should see a screen like this:
+                    </p>
+                    <img width="819px" height="450px" src="../images/java-walkthrough/sc0.png">
+                    <p>
+                        Click the "OnBotJava" tab on the top of the page and select the + button to create a new Java program.
+                    </p>
+                    <img width="819px" height="450px" src="../images/java-walkthrough/sc1.png">
+                    <p>
+                        Give your new program a name.and select a type. There are two types of programs in FTC: TeleOP and Autonomous. TeleOP, also called Driver Control, is a mode in which the robot is driven with a controller, and in Autonomous mode the robot moves on its own. In this guide, we'll exemplify our setup by writing a TeleOP program.
+                    </p>
+                    <img width="819px" height="450px" src="../images/java-walkthrough/sc2.png">
+                    <p>
+                        Click 'OK'. <br> Next, you're going to need one of the classroom Android phones. These phones have the FTC Driver Station app that controls the robot remotely. This is the device from which you select the program on the robot that you want to run, and what you plug the controller into during TeleOP. The phone has one other important function--to 'name' each device connected to the robot in what's called a configuration file. <br>
+                        First, ensure your phone is connected to your robot's WiFi. Open the FTC Driver Station app and click the ⋮ button, then select "Configure Robot" in the dropdown menu.
+                    </p>
+                    <img width="225px" height="450px" src="../images/java-walkthrough/psc1.png">
+                    <p>
+                        Click "New" to create a new config file.
+                    </p>
+                    <img width="225px" height="450px" src="../images/java-walkthrough/psc2.png">
+                    <p>
+                        Enter the "Control Hub Portal", then the "Control Hub" (a very unintuitive design, I know). 
+                    </p>
+                    <img width="225px" height="450px" src="../images/java-walkthrough/psc3.png">
+                    <img width="225px" height="450px" src="../images/java-walkthrough/psc4.png">
+                    <p>
+                        Just to get you introduced to FTC coding, we'll start out simple. connect a servo to your Control Hub in servo port 0.
+                    </p>
+                    <img width="600px" height="400px" src="../images/java-walkthrough/circuit.jpg">
+                    <p>
+                        Enter the "Servos" menu, then select the dropdown menu for slot zero and select "Servo". Now, the phone (and by extension your code) will be able to recognize that a servo is connected in that port.
+                    </p>
+                    <img width="225px" height="450px" src="../images/java-walkthrough/psc5.png">
+                    <img width="225px" height="450px" src="../images/java-walkthrough/psc7.png">
+                    <p>
+                        Give your servo a name, then press Done a few times until you're back at the Control Hub Portal screen.
+                    </p>
+                    <img width="225px" height="450px" src="../images/java-walkthrough/psc8.png">
+                    <img width="225px" height="450px" src="../images/java-walkthrough/psc9.png">
+                    <p>
+                        Press Save, then enter a name for your new configuration file and press OK. Then, make sure the active configuration is the one you've just created. If not, select the "Activate" button under its name.
+                    </p>
+                    <img width="225px" height="450px" src="../images/java-walkthrough/psc10.png">
+                    <img width="225px" height="450px" src="../images/java-walkthrough/psc11.png">
                 </div>
-                <p>
-                    First you need to connect your computer to your robot's WiFi. The name should look something like 19735-RC or 22261-RC, depending on your own team number, and the password is (hopefully still) <code>takeflighthornets</code>. Once you're connected, open the link <a href="http://192.168.43.1:8080" target="_blank">http://192.168.43.1:8080</a> and you should see a screen like this:
-                </p>
-                <img width="1024px" height="563px" src="../images/java-walkthrough/sc0.png">
-                <p>
-                    Click the "OnBotJava" tab on the top of the page and select the + button to create a new Java program.
-                </p>
-                <img width="1024px" height="563px" src="../images/java-walkthrough/sc1.png">
-                <p>
-                    Give your new program a name.and select a type. There are two types of programs in FTC: TeleOP and Autonomous. TeleOP, also called Driver Control, is a mode in which the robot is driven with a controller, and in Autonomous mode the robot moves on its own. In this guide, we'll exemplify our setup by writing a TeleOP program.
-                </p>
-                <img width="1024px" height="563px" src="../images/java-walkthrough/sc2.png">
-                <p>
-                    Click 'OK'. <br> Next, you're going to need one of the classroom Android phones. These phones have the FTC Driver Station app that controls the robot remotely. This is the device from which you select the program on the robot that you want to run, and what you plug the controller into during TeleOP. The phone has one other important function--to 'name' each device connected to the robot in what's called a configuration file. <br>
-                    First, ensure your phone is connected to your robot's WiFi. Open the FTC Driver Station app and click the ⋮ button, then select "Configure Robot" in the dropdown menu.
-                </p>
-                <img width="225px" height="450px" src="../images/java-walkthrough/psc1.png">
-                <p>
-                    Click "New" to create a new config file.
-                </p>
-                <img width="225px" height="450px" src="../images/java-walkthrough/psc2.png">
-                <p>
-                    Enter the "Control Hub Portal", then the "Control Hub" (a very unintuitive design, I know). 
-                </p>
-                <img width="225px" height="450px" src="../images/java-walkthrough/psc3.png">
-                <img width="225px" height="450px" src="../images/java-walkthrough/psc4.png">
-                <p>
-                    Just to get you introduced to FTC coding, we'll start out simple. connect a servo to your Control Hub in servo port 0.
-                </p>
-                <img width="600px" height="400px" src="../images/java-walkthrough/circuit.jpg">
-                <p>
-                    Enter the "Servos" menu, then select the dropdown menu for slot zero and select "Servo". Now, the phone (and by extension your code) will be able to recognize that a servo is connected in that port.
-                </p>
-                <img width="225px" height="450px" src="../images/java-walkthrough/psc5.png">
-                <img width="225px" height="450px" src="../images/java-walkthrough/psc7.png">
-                <p>
-                    Give your servo a name, then press Done a few times until you're back at the Control Hub Portal screen.
-                </p>
-                <img width="225px" height="450px" src="../images/java-walkthrough/psc8.png">
-                <img width="225px" height="450px" src="../images/java-walkthrough/psc9.png">
-                <p>
-                    Press Save, then enter a name for your new configuration file and press OK. Then, make sure the active configuration is the one you've just created. If not, select the "Activate" button under its name.
-                </p>
-                <img width="225px" height="450px" src="../images/java-walkthrough/psc10.png">
-                <img width="225px" height="450px" src="../images/java-walkthrough/psc11.png">
-                <p>
-                    Back on the computer, your new program should look something like this:
-                </p>
-                <div class="codebgsmall">
+                
+                <h2 id="tut2.2">2.2 Servos</h2>
+                <div class="empty">
+
+                    <p>
+                        Back on the computer, your new program should look something like this:
+                    </p>
+                    <div class="codebgsmall">
 <code style="white-space: pre-wrap;">
 package org.firstinspires.ftc.teamcode;
 
@@ -818,13 +822,13 @@ public class TeleOpProgram {
     
     //todo: write your code here
 }</code>
-                </div>
-                <p>
-                    The main method of an FTC Java program is written as <code>public void runOpMode()</code> rather than <code>public static void main (String args[])</code> (Note that since the main method isn't <code>static</code>, you won't have to make other methods <code>static</code> either). Create this method, then create a <code>Servo</code> instance variable. This reference-type variable holds an 'address' to the servo that you just registered within the configuration file. to do this, set the servo variable equal to <code>hardwareMap.servo.get(/*name of servo in configuration file*/);</code>. Here's a breakdown of what this line means.
-                </p>
-                <img width="400px" height="300px" src="../images/java-walkthrough/hardwaremap.png">
-
-                <div class="codebgsmall">
+                    </div>
+                    <p>
+                        The main method of an FTC Java program is written as <code>public void runOpMode()</code> rather than <code>public static void main (String args[])</code> (Note that since the main method isn't <code>static</code>, you won't have to make other methods <code>static</code> either). Create this method, then create a <code>Servo</code> instance variable. This reference-type variable holds an 'address' to the servo that you just registered within the configuration file. to do this, set the servo variable equal to <code>hardwareMap.servo.get(/*name of servo in configuration file*/);</code>. Here's a breakdown of what this line means.
+                    </p>
+                    <img width="400px" height="300px" src="../images/java-walkthrough/hardwaremap.png">
+    
+                    <div class="codebgsmall">
 <code style="white-space: pre-wrap;">
 package org.firstinspires.ftc.teamcode;
 
@@ -839,12 +843,12 @@ public class TeleOpProgram {
         servo = hardwareMap.servo.get("myServo");
     }
 }</code>
-                </div>
-                <p>
-                    In FTC, there are two stages to running a program, initialization and start. Setting up variables like what we've done so far here should take place during initialization, while code that actively runs in real-time should happen after start. The built-in method <code>waitForStart()</code> pauses the program once the line containing it is reached, unpausing once the initialization is over and the start button is pressed. This means that everything in the method before <code>waitForStart()</code> happens in initialization, and everything after it happens while the program runs. <br>
-                    During TeleOP, code which checks for input from the controller should loop indefinitely until the program ends. If this code isn't looped, then it would only ever do one 'check' at the very start of the program, meaning it wouldn't register that you ever provided any input after that initial first check. As you learned in the previous tutorial, <code>while</code> loops are necessary for creating indefinitely long code repetition. Another built-in method, <code>opModeIsActive()</code>, returns <code>true</code> for as long as the program has been started and is running.
-                </p>
-                <div class="codebgsmall">
+                    </div>
+                    <p>
+                        In FTC, there are two stages to running a program, initialization and start. Setting up variables like what we've done so far here should take place during initialization, while code that actively runs in real-time should happen after start. The built-in method <code>waitForStart()</code> pauses the program once the line containing it is reached, unpausing once the initialization is over and the start button is pressed. This means that everything in the method before <code>waitForStart()</code> happens in initialization, and everything after it happens while the program runs. <br>
+                        During TeleOP, code which checks for input from the controller should loop indefinitely until the program ends. If this code isn't looped, then it would only ever do one 'check' at the very start of the program, meaning it wouldn't register that you ever provided any input after that initial first check. As you learned in the previous tutorial, <code>while</code> loops are necessary for creating indefinitely long code repetition. Another built-in method, <code>opModeIsActive()</code>, returns <code>true</code> for as long as the program has been started and is running.
+                    </p>
+                    <div class="codebgsmall">
 <code style="white-space: pre-wrap;">
 package org.firstinspires.ftc.teamcode;
 
@@ -865,15 +869,15 @@ public class TeleOpProgram {
         }
     }
 }</code>
-                </div>
-                <p>
-                    Next, we need to create the check for input using an <code>if</code> statement. Use <code>gamepad1./*controller input being read for*/</code>, using the following diagram:
-                </p>
-                <img width="600px" height="400px" src="../images/java-walkthrough/controller.jpg">
-                <p>
-                    to change the position of your servo, use the built-in <code>setPosition(double pos)</code> servo method, which has one <code>double</code> parameter. <code>0.0</code> and <code>1.0</code> are the left and right limits of the servo's angular rotation, and decimals may also be entered.
-                </p>
-                <div class="codebgsmall">
+                    </div>
+                    <p>
+                        Next, we need to create the check for input using an <code>if</code> statement. Use <code>gamepad1./*controller input being read for*/</code> (i.e. <code>gamepad1.right_bumper</code>).
+                    </p>
+                    <img width="600px" height="400px" src="../images/java-walkthrough/controller.jpg">
+                    <p>
+                        To change the position of your servo, use the built-in <code>setPosition(double pos)</code> servo method, which has one <code>double</code> parameter. <code>0.0</code> and <code>1.0</code> are the left and right limits of the servo's angular rotation, and decimals may also be entered.
+                    </p>
+                    <div class="codebgsmall">
 <code style="white-space: pre-wrap;">
 package org.firstinspires.ftc.teamcode;
 
@@ -896,6 +900,10 @@ public class TeleOpProgram {
         }
     }
 }</code>
+                    </div>
+                    <p>
+                        This program should set the servo to half of its maximum angle (~150° for the ~300° servo I'm using). select the wrench button in the bottom-right corner of the window to 'build' your program, compiling it from Java into a language the robot can understand as directions. Once the build is complete, go back to the phone and make sure your controller is plugged in. If there isn't a controller icon in the top right corner, hold down A and Start together for 5 seconds until it appears. <br>Next, press the right "▼" button on the phone and scroll until you find the name of your program. Select it and press the "INIT" button in the center of the screen, give your program a second to initialize, then press the button again to start. Try pressing A on the controller, and your servo should move.
+                    </p>
                 </div>
             </div>
         </div>

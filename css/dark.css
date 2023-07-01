@@ -95,6 +95,15 @@ html {
     background-color: rgb(31, 26, 26);
 }
 
+.div-with-sidebar {
+    background-color: rgb(31, 26, 26);
+    margin-left: 210px; 
+    margin-bottom: 12px; 
+    padding-left: 50px; 
+    padding-right: 50px; 
+    border-style: solid;
+}
+
 button {
     font-family: initial; 
     font-size: initial;
