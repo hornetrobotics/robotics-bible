@@ -902,9 +902,133 @@ public class TeleOpProgram {
 }</code>
                     </div>
                     <p>
-                        This program should set the servo to half of its maximum angle (~150° for the ~300° servo I'm using). select the wrench button in the bottom-right corner of the window to 'build' your program, compiling it from Java into a language the robot can understand as directions. Once the build is complete, go back to the phone and make sure your controller is plugged in. If there isn't a controller icon in the top right corner, hold down A and Start together for 5 seconds until it appears. <br>Next, press the right "▼" button on the phone and scroll until you find the name of your program. Select it and press the "INIT" button in the center of the screen, give your program a second to initialize, then press the button again to start. Try pressing A on the controller, and your servo should move.
+                        This program should set the servo to half of its maximum angle (~150° for the ~300° servo I'm using). select the wrench button in the bottom-right corner of the window to 'build' your program, compiling it from Java into a language the robot can understand as directions. Once the build is complete, go back to the phone and make sure your controller is plugged in. If there isn't a controller icon in the top right corner, hold down A and Start together for 5 seconds until it appears. <br>Next, press the right "▼" button on the phone and scroll until you find the name of your program. Select it and press the "INIT" button in the center of the screen, give your program a second to initialize, then press the button again to start. Try pressing A on the controller, and your servo should move.<br>
+                        <br>
+                        CODING CHALLENGE: Make your program use a single button on the controller to toggle between servo positions <code>0.0</code> and <code>1.0</code>.
+                        <details>
+                        <summary>Solution (Click to reveal)</summary>
+                        <hr>
+                        <p>There are a few ways of solving this one. Firstly, you could store the current position within a <code>double</code> variable and use an <code>if</code>...<code>else</code> statement to determine what the new position should be, like this:</p>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+@TeleOp
+
+public class TeleOpProgram {
+    private Servo servo;
+
+    public void runOpMode() {
+        servo = hardwareMap.servo.get("myServo");
+
+        double pos = 0.0;
+        //Make sure you don't define your pos variable within the while statement! Because that section of code loops, that would cause pos to be continually set to 0.0 regardless of how you try to change it.
+        waitForStart();
+
+        while (opModeIsActive()) {
+            if (gamepad1.a) {
+                if (pos == 0.0) {
+                    pos = 1.0;
+                } else {
+                    pos = 0.0;
+                }
+                servo.setPosition(pos);
+            }
+        }
+    }
+}</code></div>
+                        <p>
+                            Another way of solving this is by creating a boolean variable which tracks the current position of the servo, like this:
+                        </p>
+                        <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+@TeleOp
+
+public class TeleOpProgram {
+    private Servo servo;
+
+    public void runOpMode() {
+        servo = hardwareMap.servo.get("myServo");
+
+        boolean servoState = false;
+
+        waitForStart();
+
+        while (opModeIsActive()) {
+            if (gamepad1.a) {
+                if (servoState == false) {
+                    servo.setPosition(0.0);
+                } else {
+                    servo.setPosition(1.0);
+                }
+                servoState = !servoState;
+            }
+        }
+    }
+}</code></div>
+                        <p>
+                            Both of these solutions have one significant problem. The code that toggles the servo position is within a <code>while</code> loop that runs constantly, meaning that for as long as the A button on the controller is being pressed, the servo will switch rapidly between <code>0.0</code> and <code>1.0</code>. Even if you're holding it down for a very short amount of time, the code loops so quickly that the servo will just spasm back and forth unpredictably. In order to fix this and make a proper toggle, you'll need to use a <code>sleep(int ms)</code> method. <code>sleep()</code> methods can be thought of as a temporary pause on the program. Once reaching the <code>sleep()</code> statement, the code will pause for however many milliseconds you enter into it, then continue running. Incorporate it into the method like this.
+                        </p>
+                                                <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+@TeleOp
+
+public class TeleOpProgram {
+    private Servo servo;
+
+    public void runOpMode() {
+        servo = hardwareMap.servo.get("myServo");
+
+        boolean servoState = false;
+
+        waitForStart();
+
+        while (opModeIsActive()) {
+            if (gamepad1.a) {
+                if (servoState == false) {
+                    servo.setPosition(0.0);
+                } else {
+                    servo.setPosition(1.0);
+                }
+                servoState = !servoState;
+                sleep(200);
+            }
+        }
+    }
+}</code></div>
+                        <p>Now your program should function correctly.</p>
+                        <hr>
+                        </details>
                     </p>
                 </div>
+
+                <h2 id="tut2.3">2.3 Motors</h2>
+                <div class="empty">
+                    <p>
+
+                    </p>
+                </div>
+
+                <div class="empty">
+                    <img src="../images/barraconstruction.gif" class="center"> <br>
+                    <img src="../images/construction.gif"> <img src="../images/wip.gif"> <img src="../images/construction.gif">
+                    <p><b>woah there buddy!</b> this part of the website isn't finished yet. hopefully i'll get to updating it soon, but until then, ask the nearest captain for help! Or: Enjoy the music</p>
+                    <audio controls>
+                        <source src="../sfx/dogbonk_short.mp3">
+                        oops your browser can't play the audio
+                    </audio>
+                </div>
+                
             </div>
         </div>
     </div>

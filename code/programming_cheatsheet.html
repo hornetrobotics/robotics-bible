@@ -26,21 +26,55 @@
 
     <div>
         <h1>FTC Java Cheatsheet</h1>
-        <h2>DC Motors</h2>
+        <h2>DC Motor (<code>DCMotor</code>)</h2>
         <table>
             <tr>
-                <td><code>DcMotor.setPower(double power)</code></td>
-                <td>Set motor power (speed) within the interval [-1.0, 1.0]</td>
+                <td width="50%"><code>void setPower(double power)</code></td>
+                <td>Sets the motor's power (speed), within the interval [-1.0, 1.0]</td>
             </tr>
             <tr>
-                <td><code>DcMotor.setDirection(DcMotor.Direction.FORWARD)</code></td>
+                <td ><code>void setDirection(DcMotor.Direction.FORWARD)</code></td>
                 <td>Set motor direction to forward movement.</td>
             </tr>
             <tr>
-                <td><code>DcMotor.setDirection(DcMotor.Direction.REVERSE)</code></td>
+                <td><code>void setDirection(DcMotor.Direction.REVERSE)</code></td>
                 <td>Set motor direction to reverse movement.</td>
             </tr>
-            
+            <tr>
+                <td><code>void setTargetPosition(int position)</code></td>
+                <td>Sets a target position for the motor to run to.</td>
+            </tr>
+            <tr>
+                <td><code>void setMode(DcMotor.RunMode.RUN_TO_POSITION)</code></td>
+                <td>The motor continues rotating at the speed specified by <code>setPower()</code> until it reaches the rotation amount specified by <code>setTargetPosition()</code>.</td>
+            </tr>
+            <tr>
+                <td><code>void setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER)</code></td>
+                <td>Stops motor movement and resets the current encoder position to 0.<br><small>Don't know what an encoder is? Check out the <a>hardware cheatsheet</a>.</small></td>
+            </tr>
+            <tr>
+                <td><code>void setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER)</code></td>
+                <td>Tells the motor to run without an encoder (using continuous movement rather than a target position)</td>
+            </tr>
+            <tr>
+                <td><code>void setMode(DcMotor.RunMode.RUN_USING_ENCODER)</code></td>
+                <td>Tells the motor to run with an encoder (run to a target position rather than using continuous movement)</td>
+            </tr>
+        </table>
+        <h2>Servo (<code>Servo</code>)</h2>
+        <table>
+            <tr>
+                <td width="50%">void setPosition(double pos)</td>
+                <td>Sets the angular position of the servo.</td>
+            </tr>
+            <tr>
+                <td>void setDirection(Servo.Direction.FORWARD)</td>
+                <td>Makes the servo rotate forward.</td>
+            </tr>
+            <tr>
+                <td>void setDirection(Servo.Direction.REVERSE)</td>
+                <td>Reverses the direction the servo rotates in.</td>
+            </tr>
         </table>
         
 

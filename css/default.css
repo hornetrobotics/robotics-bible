@@ -8,6 +8,7 @@ a {text-align: center; color: rgb(39, 45, 102)}
 span {color: black;}
 
 details {color: rgb(37, 42, 82);}
+summary {font-weight: bold;}
 
 nav {text-align: center;}
 hr{
@@ -204,4 +205,18 @@ button {
     padding-left: 25px;
     padding-right: 25px;
     vertical-align: top;
+}
+
+table {
+    border: 2px solid;
+    border-color: rgb(94, 103, 184);
+    width: 100%;
+}
+
+td {
+    border: 2px solid;
+    border-color: rgb(94, 103, 184);
+    padding: 8px;
+    background-color: rgb(192, 198, 255);
+    color: rgb(0, 0, 0);
 }

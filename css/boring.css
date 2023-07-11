@@ -8,6 +8,7 @@ a {text-align: center; color: rgb(58, 99, 233); font-family: 'Gill Sans', 'Gill 
 span {color: rgb(0, 0, 0); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
 
 details {color: rgb(0, 0, 0); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;}
+summary {font-weight: bold;}
 
 nav {text-align: center;}
 
