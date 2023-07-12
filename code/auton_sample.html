@@ -26,81 +26,121 @@
     <hr>
 
     <div>
-        <h1>FTC Java Cheatsheet</h1>
+        <h2>Autonomous Code File</h2>
+        <p>
+            if you need any explanation of anything in this program, be sure to check out the walkthrough.
+        </p>
+        <div class="codebg">
+            <code style="white-space: pre-wrap">
+package org.firstinspires.ftc.teamcode;
+import java.util.*;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.*;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+
+@Autonomous(name = "LeftFieldAuton")
+public class LeftFieldAuton extends LinearOpMode {  
+    private DcMotor leftback;  
+    private DcMotor leftfront;  
+    private DcMotor rightfront;  
+    private DcMotor rightback;    
+    private DcMotor slideMotor;  
+    private Servo clawServo;  
+    private Servo armServo;   
+    @Override   public void runOpMode() {    
+        leftback = hardwareMap.get(DcMotor.class, "left back");    
+        leftfront = hardwareMap.get(DcMotor.class, "left front");    
+        rightfront = hardwareMap.get(DcMotor.class, "right front");    
+        rightback = hardwareMap.get(DcMotor.class, "right back");        
+        slideMotor = hardwareMap.get(DcMotor.class, "rightSlide");    
+        clawServo = hardwareMap.servo.get("ClawServo");        
+        armServo = hardwareMap.get(Servo.class, "ArmServo");        
+        rightfront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);    
+        leftfront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);    
+        rightback.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);    
+        leftback.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);    
+        slideMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);    
+        leftback.setDirection(DcMotorSimple.Direction.REVERSE);    
+        leftfront.setDirection(DcMotorSimple.Direction.REVERSE);    
+        waitForStart();        
+        //Close Claw (change value to whatever your claw servo's close position is)
+        clawServo.setPosition(.75);    
+        sleep(300);    
+        //Move forward
+        strafe(-200, 0.25);    
+        sleep(200);    
+        moveForward(1312, 0.25);    
+        sleep(200);    
+        //Lift up linear slide and arm (will be different depending on how your design works)
+        armServoR.setPosition(0.56);
+        slideMotor.setTargetPosition(900);
+        slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        slideMotor.setPower(.5);
+        //Move to junction
+        strafe(600, 0.25);
+        sleep(200);
+        moveForward(110, 0.25);
+        sleep(100);
+        //open claw and drop the cone
+        clawServo.setPosition(0.6);    
+        sleep(100);    
+        //Park (If you have a camera system, change the value being strafed depending on what parking position your camera reads)
+        strafe(-600, 0.25);    
+        sleep(200);    
+        armServoR.setPosition(0.1);    
+        slideMotor.setTargetPosition(0);    
+        slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);    
+        slideMotor.setPower(.75);    
+        clawServo.setPosition(.75);    
+        armServoR.setPosition(0.08);  
+    }    
+    void moveForward(int ticks, double speed) {    
+        rightfront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);    
+        leftfront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);    
+        rightback.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);    
+        leftback.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);    
+        rightfront.setTargetPosition(ticks);    
+        leftfront.setTargetPosition(ticks);    
+        rightback.setTargetPosition(ticks);    
+        leftback.setTargetPosition(ticks);    
+        rightfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);    
+        leftfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);    
+        rightback.setMode(DcMotor.RunMode.RUN_TO_POSITION);    
+        leftback.setMode(DcMotor.RunMode.RUN_TO_POSITION);    
+        while (rightfront.isBusy() || leftfront.isBusy()) {
+            leftfront.setPower(speed);    
+            rightfront.setPower(speed);   
+            leftback.setPower(speed);    
+            rightback.setPower(speed); 
+        }  
+    }   
+    void strafe(int ticks, double speed) {    
+        rightfront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);    
+        leftfront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);    
+        rightback.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);    
+        leftback.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);    
+        rightfront.setTargetPosition(-ticks);    
+        leftfront.setTargetPosition(ticks);    
+        rightback.setTargetPosition(ticks);    
+        leftback.setTargetPosition(-ticks);    
+        rightfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);    
+        leftfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);    
+        rightback.setMode(DcMotor.RunMode.RUN_TO_POSITION);    
+        leftback.setMode(DcMotor.RunMode.RUN_TO_POSITION);    
+        while (rightfront.isBusy() || leftfront.isBusy()) {
+            leftfront.setPower(speed);    
+            rightfront.setPower(speed);   
+            leftback.setPower(speed);    
+            rightback.setPower(speed); 
+        }    
+    }  
+}  
+                </code>
+            </div>
         
-        <h2>DC Motor (<code>DCMotor</code>)</h2>
-        <table>
-            <tr>
-                <td width="50%"><code>setPower(double power)</code></td>
-                <td>Sets the motor's power (speed), within the interval [-1.0, 1.0]</td>
-            </tr>
-            <tr>
-                <td ><code>setDirection(DcMotor.Direction.FORWARD)</code></td>
-                <td>Set motor direction to forward movement.</td>
-            </tr>
-            <tr>
-                <td><code>setDirection(DcMotor.Direction.REVERSE)</code></td>
-                <td>Set motor direction to reverse movement.</td>
-            </tr>
-            <tr>
-                <td><code>setTargetPosition(int position)</code></td>
-                <td>Sets a target position for the motor to run to.</td>
-            </tr>
-            <tr>
-                <td><code>setMode(DcMotor.RunMode.RUN_TO_POSITION)</code></td>
-                <td>The motor continues rotating at the speed specified by <code>setPower()</code> until it reaches the rotation amount specified by <code>setTargetPosition()</code>.</td>
-            </tr>
-            <tr>
-                <td><code>setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER)</code></td>
-                <td>Stops motor movement and resets the current encoder position to 0.<br><small>Don't know what an encoder is? Check out the <a>hardware cheatsheet</a>.</small></td>
-            </tr>
-            <tr>
-                <td><code>setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER)</code></td>
-                <td>Tells the motor to run without an encoder (using continuous movement rather than a target position)</td>
-            </tr>
-            <tr>
-                <td><code>setMode(DcMotor.RunMode.RUN_USING_ENCODER)</code></td>
-                <td>Tells the motor to run with an encoder (run to a target position rather than using continuous movement)</td>
-            </tr>
-            <tr>
-                <td><code>setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE)</code></td>
-                <td>When the motor is recieving zero power, it will brake and actively resist movement (i.e. can't be manually rotated). Generally you should use this ZeroPowerBehavior mode for motors.</td>
-            </tr>
-            <tr>
-                <td><code>setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT)</code></td>
-                <td>When the motor is recieving zero power, it will not move on its own, but not resist movement (can be manually rotated).</td>
-            </tr>
-        </table>
-        <h2>Servo (<code>Servo</code>)</h2>
-        <table>
-            <tr>
-                <td width="50%"><code>setPosition(double pos)</code></td>
-                <td>Sets the angular position of the servo.</td>
-            </tr>
-            <tr>
-                <td><code>setDirection(Servo.Direction.FORWARD)</code></td>
-                <td>Makes the servo rotate forward.</td>
-            </tr>
-            <tr>
-                <td><code>setDirection(Servo.Direction.REVERSE)</code></td>
-                <td>Reverses the direction the servo rotates in.</td>
-            </tr>
-        </table>
-        <h2>Misc.</h2>
-        <table>
-            <tr>
-                <td width="50%"><code>public void runOpMode() { }</code></td>
-                <td>The main method that is called when INIT is selected on the Driver Station app.</td>
-            </tr>
-            <tr>
-                <td><code>waitForStart()</code></td>
-                <td>Pauses the program until the start button is selected on the Driver Station app, thereby separating the initialize and run phases.</td>
-            </tr>
-            <tr>
-                <td><code>opModeIsActive()</code></td>
-                <td>Returns a <code>boolean</code> which is true if the program is currently in its "run" phase and false otherwise.</td>
-            </tr>
-        </table>    
+        
+
     </div>
 
     <footer>
