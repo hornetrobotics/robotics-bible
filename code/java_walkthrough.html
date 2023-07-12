@@ -874,7 +874,7 @@ public class TeleOpProgram {
                     <p>
                         Next, we need to create the check for input using an <code>if</code> statement. Use <code>gamepad1./*controller input being read for*/</code> (i.e. <code>gamepad1.right_bumper</code>).
                     </p>
-                    <img width="600px" height="400px" src="../images/java-walkthrough/controller.jpg">
+                    <img width="600px" height="400px" id="controllerDiagram" src="../images/java-walkthrough/controller.jpg">
                     <p>
                         To change the position of your servo, use the built-in <code>setPosition(double pos)</code> servo method, which has one <code>double</code> parameter. <code>0.0</code> and <code>1.0</code> are the left and right limits of the servo's angular rotation, and decimals may also be entered.
                     </p>
@@ -1116,12 +1116,15 @@ public class TeleOpProgram {
 
         function setTheme(x) {
             var get = document.getElementById('logo');
+            var controller = document.getElementById('controllerDiagram');
             var theme = document.getElementsByTagName('link')[0];
             theme.setAttribute('href', x);
             if (x == '../css/default.css' || x == '../css/boring.css') {
                 get.src = "../images/hornet_logo_black.png";
+                controller.src = "../images/java-walkthrough/controller_dark.png";
             } else {
                 get.src = "../images/hornet_logo_white.png";
+                controller.src = "../images/java-walkthrough/controller.png";
             }
         }
     </script>
