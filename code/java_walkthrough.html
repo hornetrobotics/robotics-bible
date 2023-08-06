@@ -1030,6 +1030,148 @@ public class TeleOpProgram {
                     </audio>
                 </div>
                 
+
+                <h2 id="tut2.3">2.3 Threads</h2>
+
+                <div class="empty">
+                    <p>
+                        Now you know how to make individual parts work, but it's a slightly more complicated task making them function correctly simultaneously. Take this code for example:
+                    </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+@TeleOp
+
+public class TeleOpProgram {
+    private Servo servo1;
+    private DCMotor motor;
+
+    public void runOpMode() {
+        servo1 = hardwareMap.servo.get("myServo");
+        motor = hardwareMap.dcMotor.get("Motor");
+
+        boolean servo1State = false;
+
+        waitForStart();
+
+        while (opModeIsActive()) {
+            motor.setPower(gamepad1.left_stick_y);
+
+            if (gamepad1.a) {
+                if (servo1State == false) {
+                    servo.setPosition(0.0);
+                } else {
+                    servo.setPosition(1.0);
+                }
+                servo1State = !servo1State;
+                sleep(200);
+            }
+        }
+    }
+}</code>
+                </div>
+                <p>
+                    Looks simple, right? There is one complication with this that makes it an unviable way of doing things. If you were to hold down the left joystick to spin the motor, then press A to toggle the servo position, the motor's movement would be temporarily interrupted. This is because the <code>sleep(200);</code> line pauses the <b>entire program</b>, not just the <code>if</code> statement code that it's a part of. When you press A and the program hits the sleep method call, it ceases the looping of the <code>while (opModeIsActive())</code> loop until the sleep time is over, so it can't loop back to the <code>setPower</code> method call. For efficiency's sake, your robot should be able to do multiple things at once. This is accomplished through separating your program into <code>Thread</code>s. <br> 
+                    You can think of a <code>Thread</code> as a sequence of code independent of the main program. This means any code within a <code>Thread</code> runs separately from everything else, so something like a <code>sleep()</code> statement elsewhere within the program won't affect the <code>Thread</code>, and vice versa. To set up a thread in this program, change it like this:
+                </p>
+                    <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+@TeleOp
+
+public class TeleOpProgram {
+    private Servo servo1;
+    private DCMotor motor;
+
+    <code style="color: greenyellow;">Thread motorMovement = new Thread() { 
+        public void run () {
+            while (opModeIsActive()) {
+                motor.setPower(gamepad1.left_stick_y);
+            }
+        }
+    }
+    </code>
+    public void runOpMode() {
+        servo1 = hardwareMap.servo.get("myServo");
+        motor = hardwareMap.dcMotor.get("Motor");
+
+        boolean servo1State = false;
+
+        waitForStart();
+
+        while (opModeIsActive()) {
+            <code style="color: red; text-decoration: line-through;">motor.setPower(gamepad1.left_stick_y);</code>
+
+            if (gamepad1.a) {
+                if (servo1State == false) {
+                    servo.setPosition(0.0);
+                } else {
+                    servo.setPosition(1.0);
+                }
+                servo1State = !servo1State;
+                sleep(200);
+            }
+        }
+    }
+}</code>
+                </div>
+                <p>
+                    Notice that the main method within the <code>Thread</code> is <code>public void run ()</code> rather than <code>public void runOpMode ()</code>. There's only one main <code>runOpMode ()</code> method, while there can be multiple <code>run ()</code> methods across different <code>Thread</code>s. Finally, make sure to tell the <code>Thread</code> to start once the start button is pressed.
+                </p>
+                <div class="codebgsmall">
+<code style="white-space: pre-wrap;">
+package org.firstinspires.ftc.teamcode;
+
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+@TeleOp
+
+public class TeleOpProgram {
+    private Servo servo1;
+    private DCMotor motor;
+
+    Thread motorMovement = new Thread() { 
+        public void run () {
+            while (opModeIsActive()) {
+                motor.setPower(gamepad1.left_stick_y);
+            }
+        }
+    }
+    
+    public void runOpMode() {
+        servo1 = hardwareMap.servo.get("myServo");
+        motor = hardwareMap.dcMotor.get("Motor");
+
+        boolean servo1State = false;
+
+        waitForStart();
+
+        <code style="color: yellowgreen;">motorMovement.start();</code>
+
+        while (opModeIsActive()) {
+            if (gamepad1.a) {
+                if (servo1State == false) {
+                    servo.setPosition(0.0);
+                } else {
+                    servo.setPosition(1.0);
+                }
+                servo1State = !servo1State;
+                sleep(200);
+            }
+        }
+    }
+}</code>
+                </div>
+                <p>
+                    Now that the code is separated, those two functions should be able to run simultaneously. You could also separate the servo code segment into a <code>Thread</code> rather than the motor, but either way works as long as they're kept apart.
+                </p>
+                </div>
             </div>
         </div>
     </div>
