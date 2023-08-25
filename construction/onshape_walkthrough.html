@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <head>
-    <title>the holmdel robotics bible | 2021-2022</title>
+    <title>the holmdel robotics bible | construction resources</title>
     <link rel="stylesheet" href="../css/default.css">
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
 </head>
 
-<body class="shadowed-bg" style="margin-top:0px;">
+<body class="shadowed-bg" style="margin-top:0px">
     <header class="bg" style="margin-top: -20px; padding-top: 20px; padding-bottom: 8px; margin-left: -8px; margin-right: -8px;">
-        <h1>the holmdel robotics bible <sub>hall of fame</sub></h1>
+        <h1>the holmdel robotics bible <sub>construction resources</sub></h1>
         <nav>
             <span><a href="../index.html">home</a></span>
             <span> | </span>
@@ -27,22 +27,31 @@
     
     <hr style="margin-top: 0px; margin-bottom: 12px;">
 
+    <div style="padding-left: 0px;padding-right: 0px; margin-bottom:100px;" class="shadowed-bg">
+        <div class="sidebar" style="height: 350px;">
+<p style="white-space: pre-wrap;"><a href="#tut1">1. OnShape</a>
+</p>
 
-    <div style="margin-bottom: 12px; padding-left: 50px; padding-right: 50px; border-style: solid;" class="bg">
-        <h1 id="tut1">2021-2022</h1>
-        <h2 style="text-align: center; font-family: 'Fordscript';">" The Dark Ages "</h2>
+        </div>
+
+        <div class="div-with-sidebar">
+            <h1 id="tut1">1. OnShape (ft. Finley Torrens)</h1>
+            <div class="empty">
+                <p>
+                    We're working on getting all of this integrated into the website! until then though, here's an (also unfinished) google slides presentation.
+                </p>
+                <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSv6IUQ3uYi3Py6l6adKNGmpAnBhT_N-PzC7X0QRmFwRg6WSh2zZwdp82PV07aDSjde5m8O23GEouRQ/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+            </div>
+        </div>
     </div>
-
-    <div style="margin-bottom: 12px; padding-left: 50px; padding-right: 50px; border-style: solid;" class="bg">
-        <h1 class="stroke" style="color: royalblue;">19735 HRNT</h1>
     </div>
-
 
     <footer class="bg" style="margin-bottom: -8px; margin-left: -8px; margin-right: -8px;">
         <hr>
         <div>
             <img src="./images/hornet_logo_black.png" id="logo" alt="holmdel robotics hornet logo" style="width:100px;height:100px;" class="center">
         </div>
+        
         <div class="badges">
             <img src="../images/badges/button_copy16.png" class="boring-hide" alt="the frog" style="width:80px;height:15px;">
             <img src="../images/badges/button_copy9.gif" class="boring-hide" alt="funky shirts" style="width:80px;height:15px;">
@@ -56,7 +65,7 @@
             <img src="../images/badges/8015_familyguy.png" class="boring-hide" alt="family guy" style="width:80px;height:15px;">
             <img src="../images/badges/infp.gif" class="boring-hide" alt="im an infp" style="width:80px;height:15px;">
             <img src="../images/badges/savewater.gif" class="boring-hide" alt="save water" style="width:80px;height:15px;">
-            <img src="../images/badges/luvsoaps.gif" class="boring-hide" alt="i <3 soaps" style="width:80px;height:15px;">      
+            <img src="../images/badges/luvsoaps.gif" class="boring-hide" alt="i <3 soaps" style="width:80px;height:15px;">            
         </div>        
     </footer>
 
@@ -118,12 +127,15 @@
 
         function setTheme(x) {
             var get = document.getElementById('logo');
+            var controller = document.getElementById('controllerDiagram');
             var theme = document.getElementsByTagName('link')[0];
             theme.setAttribute('href', x);
             if (x == '../css/default.css' || x == '../css/boring.css') {
                 get.src = "../images/hornet_logo_black.png";
+                controller.src = "../images/java-walkthrough/controller_dark.png";
             } else {
                 get.src = "../images/hornet_logo_white.png";
+                controller.src = "../images/java-walkthrough/controller.png";
             }
         }
     </script>

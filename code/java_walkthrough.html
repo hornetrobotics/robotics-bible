@@ -7,15 +7,17 @@
 
 <body class="shadowed-bg" style="margin-top:0px">
     <header class="bg" style="margin-top: -20px; padding-top: 20px; padding-bottom: 8px; margin-left: -8px; margin-right: -8px;">
-        <h1 style="margin-bottom: 20px;">the holmdel robotics bible <sub>coding resources</sub></h1>
+        <h1>the holmdel robotics bible <sub>coding resources</sub></h1>
         <nav>
             <span><a href="../index.html">home</a></span>
             <span> | </span>
             <span><a href="../new_members.html">for new team members</a></span>
             <span> | </span>
-            <span><a href="../">for new captains</a></span>
+            <span><a href="../new_captains.html">for new captains</a></span>
             <span> | </span>
             <span><a href="../coding_resources.html">coding resources</a></span>
+            <span> | </span>
+            <span><a href="../construction_resources.html">construction resources</a></span>
             <span> | </span>
             <span><a href="../hall_of_fame.html">hall of fame</a></span>
             <span> | </span>
@@ -26,7 +28,7 @@
     <hr style="margin-top: 0px; margin-bottom: 12px;">
 
     <div style="padding-left: 0px;padding-right: 0px; margin-bottom:100px;" class="shadowed-bg">
-        <div class="sidebar">
+        <div class="sidebar" style="height: 350px;">
 <p style="white-space: pre-wrap;"><a href="#tut1">1. Java Introduction</a>
     <a href="#tut1.1">1.1 Printing</a>
     <a href="#tut1.2">1.2 Variables</a>
@@ -42,6 +44,7 @@
 <a href="#tut2">2. Java in FTC</a>
     <a href="#tut2.1">2.1 Setup</a>
     <a href="#tut2.2">2.2 Servos</a>
+    <a href="#tut2.3">2.3 Motors</a>
     <a href="#tut2.4">2.4 Threads</a>
 </p>
 
@@ -1063,9 +1066,9 @@ public class TeleOpProgram {
 
             if (gamepad1.a) {
                 if (servo1State == false) {
-                    servo.setPosition(0.0);
+                    servo1.setPosition(0.0);
                 } else {
-                    servo.setPosition(1.0);
+                    servo1.setPosition(1.0);
                 }
                 servo1State = !servo1State;
                 sleep(200);
@@ -1111,9 +1114,9 @@ public class TeleOpProgram {
 
             if (gamepad1.a) {
                 if (servo1State == false) {
-                    servo.setPosition(0.0);
+                    servo1.setPosition(0.0);
                 } else {
-                    servo.setPosition(1.0);
+                    servo1.setPosition(1.0);
                 }
                 servo1State = !servo1State;
                 sleep(200);
@@ -1158,9 +1161,9 @@ public class TeleOpProgram {
         while (opModeIsActive()) {
             if (gamepad1.a) {
                 if (servo1State == false) {
-                    servo.setPosition(0.0);
+                    servo1.setPosition(0.0);
                 } else {
-                    servo.setPosition(1.0);
+                    servo1.setPosition(1.0);
                 }
                 servo1State = !servo1State;
                 sleep(200);
@@ -1172,6 +1175,15 @@ public class TeleOpProgram {
                 <p>
                     Now that the code is separated, those two functions should be able to run simultaneously. You could also separate the servo code segment into a <code>Thread</code> rather than the motor, but either way works as long as they're kept apart.
                 </p>
+                </div>
+                <div class="empty">
+                    <img src="../images/barraconstruction.gif" class="center"> <br>
+                    <img src="../images/construction.gif"> <img src="../images/wip.gif"> <img src="../images/construction.gif">
+                    <p><b>woah there buddy!</b> this part of the website isn't finished yet. hopefully i'll get to updating it soon, but until then, ask the nearest captain for help! Or: Enjoy the music</p>
+                    <audio controls>
+                        <source src="../sfx/dogbonk_short.mp3">
+                        oops your browser can't play the audio
+                    </audio>
                 </div>
             </div>
         </div>
