@@ -13,7 +13,7 @@
             <span> | </span>
             <span><a href="../new_members.html">for new team members</a></span>
             <span> | </span>
-            <span><a href="../">for new captains</a></span>
+            <span><a href="../new_captains.html">for new captains</a></span>
             <span> | </span>
             <span><a href="../coding_resources.html">coding resources</a></span>
             <span> | </span>
@@ -68,7 +68,7 @@
             <tr>
                 <td><code>void</code></td>
                 <td><code>setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER)</code></td>
-                <td>Stops motor movement and resets the current encoder position to 0.<br><small>Don't know what an encoder is? Check out the <a>hardware cheatsheet</a>.</small></td>
+                <td>Stops motor movement and resets the current encoder position to 0.<br></td>
             </tr>
             <tr>
                 <td><code>void</code></td>
@@ -136,7 +136,20 @@
                 <td><code>opModeIsActive()</code></td>
                 <td>Returns a <code>boolean</code> which is true if the program is currently in its "run" phase and false otherwise.</td>
             </tr>
-        </table>    
+        </table> 
+        <h2>Threads</h2>
+        <table>
+            <tr>
+                <td width="8%" style="background-color: rgba(0, 0, 0, 0); border: 0px;"></td>
+                <td width="40%"><code>Thread nameOfThread = new Thread() { }</code></td>
+                <td>The statement you write to create a Thread, a chain of events independent from the main method or any other thread. This means a sleep statement in one Thread or the main method won't pause a different Thread, or vice versa.</td>
+            </tr>
+            <tr>
+                <td width="8%" style="background-color: rgba(0, 0, 0, 0); border: 0px;"></td>
+                <td><code>public void run () { }</code></td>
+                <td>The main method within a Thread (replaces what would be <code>public void runOpMode() { }</code> outside of the thread)</td>
+            </tr>
+        </table>     
         <h2>Controller Diagram (read-only variables)</h2>
         <img width="600px" height="400px" id="controllerDiagram" src="../images/java-walkthrough/controller.jpg">
         <p>Ex: <code>gamepad1.x</code>, <code>gamepad1.left_trigger</code></p>
