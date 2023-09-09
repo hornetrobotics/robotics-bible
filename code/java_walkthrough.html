@@ -1093,7 +1093,7 @@ public class TeleOpProgram {
     private Servo servo1;
     private DCMotor motor;
 
-    <code style="color: greenyellow;">Thread motorMovement = new Thread() { 
+    <code class="addedtext">Thread motorMovement = new Thread() { 
         public void run () {
             while (opModeIsActive()) {
                 motor.setPower(gamepad1.left_stick_y);
@@ -1110,7 +1110,7 @@ public class TeleOpProgram {
         waitForStart();
 
         while (opModeIsActive()) {
-            <code style="color: red; text-decoration: line-through;">motor.setPower(gamepad1.left_stick_y);</code>
+            <code class="removedtext">motor.setPower(gamepad1.left_stick_y);</code>
 
             if (gamepad1.a) {
                 if (servo1State == false) {
@@ -1156,7 +1156,7 @@ public class TeleOpProgram {
 
         waitForStart();
 
-        <code style="color: yellowgreen;">motorMovement.start();</code>
+        <code class="addedtext">motorMovement.start();</code>
 
         while (opModeIsActive()) {
             if (gamepad1.a) {
