@@ -131,7 +131,7 @@ button {
 .column-left {
     box-sizing: border-box;
     float: left;
-    width: 49%;
+    width: 49.5%;
     background-color: rgb(182, 189, 252);
     border-color: rgb(94, 103, 184);
     border-style: solid;
@@ -139,11 +139,12 @@ button {
     margin-right: 3px;
     padding-left: 15px;
     padding-right: 15px;
+    border-radius: 10px;
 }
 .column-right {
     box-sizing: border-box;
     float: right;
-    width: 49%;
+    width: 49.5%;
     background-color: rgb(182, 189, 252);
     border-color: rgb(94, 103, 184);
     border-style: solid;
@@ -151,6 +152,7 @@ button {
     margin-left: 3px;
     padding-left: 15px;
     padding-right: 15px;
+    border-radius: 10px;
 }
 
 /* Clear floats after the columns */
