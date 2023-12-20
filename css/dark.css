@@ -203,6 +203,14 @@ button {
     margin: 0 auto;
 }
 
+.table-centered {
+    padding-left: 0px; 
+    padding-right: 0px; 
+    display: table; 
+    text-align: center;
+    margin: 0 auto;
+}
+
 .table-element {
     box-sizing: border-box;
     background-color: rgb(31, 26, 26);
@@ -224,6 +232,7 @@ button {
     padding-right: 25px;
     vertical-align: top;
     border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 table {
@@ -247,4 +256,8 @@ td {
 .removedtext {
     color: red; 
     text-decoration: line-through;
+}
+
+.img-roundedcorners {
+    border-radius: 10px;
 }
