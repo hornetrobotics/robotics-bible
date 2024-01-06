@@ -1,0 +1,319 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        background-color: black;
+        background-size: 100%;
+        color: white;
+        background-image: url("./images/firstperson/underwater-texture.jpg");
+      }
+  
+      #scene {
+        perspective: 800px;
+        perspective-origin: 50% 50%;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        transform-style: preserve-3d;
+      }
+      
+      .group {
+        transform-style: preserve-3d;
+      }
+      
+      .clickable {
+        cursor: pointer;
+      }
+  
+      #geometry {
+        position: relative;
+        
+        transform-style: preserve-3d;
+        transform-origin: 500px 0px 0px;
+      }
+  
+      .room {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        transform-style: preserve-3d;
+      }
+  
+      .wall {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        box-sizing: border-box;
+        background-color: blue;
+        background: url("./images/firstperson/wall.jpg");
+      }
+      
+      .emptyplane {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        box-sizing: border-box;
+      }
+      
+      .building {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        box-sizing: border-box;
+        background-color: blue;
+        background: url("./images/firstperson/wall.jpg");
+        background-size: cover;
+      }
+      
+      .bubbles {
+        position: absolute;
+        width: 618px;
+        height: 618px;
+        box-sizing: border-box;
+        background-color: blue;
+        background: url("./images/firstperson/bubbles.gif");
+      }
+      
+      .tree2 {
+        position: absolute;
+        width: 600px;
+        height: 400px;
+        box-sizing: border-box;
+        background-color: blue;
+        background: url("./images/firstperson/coral.png");
+  
+      }
+      
+      .wallMedium {
+        position: absolute;
+        width: 1000px;
+        height: 400px;
+        box-sizing: border-box;
+        background-color: blue;
+        background: url("./images/firstperson/wall.jpg");
+      }
+      
+      .wallLong {
+        position: absolute;
+        width: 3200px;
+        height: 400px;
+        box-sizing: border-box;
+        background-color: blue;
+        background: url("./images/firstperson/wall.jpg");
+      }
+      
+      .floor {
+        position: absolute;
+        width: 3200px;
+        height: 3200px;
+        box-sizing: border-box;
+        background-color: blue;
+        background: url("./images/firstperson/arcadecarpet.png");
+        transform: rotateX(90deg) translateY(400px) translateX(-800px) translateZ(1400px); 
+      }
+      
+      #info {
+      }
+  
+      .frontWall { transform: translateZ(200px); }
+      .backWall { transform: rotateY(180deg) translateZ(200px); }
+      .leftWall { transform: rotateY(-90deg) translateZ(200px); }
+      .rightWall { transform: rotateY(90deg) translateZ(200px); }
+  
+      #room1 { transform: translate3d(0, -200px, 0); }
+      #room2 { transform: translate3d(-800px, -200px, 0); }
+    </style>
+  </head>
+  <body>
+  <div id="info">0<br>0<br>0</div>
+  
+  <div id="scene" onload="updateGeometry();">
+    <div id="geometry" style="transform-origin: 0px 0px 800px; transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);">
+      <div class="floor"></div>
+
+      
+      <div class="emptyplane" style="text-align: center; transform: translateY(-30px) translateX(900px) translateZ(1800px) rotateY(215deg); color: black;">
+      home page<br><a href="./index.html"><img width="200px" src="./images/firstperson/home.png"></a></div>
+      
+      <div class="room" id="buidling2" style="transform: translateY(-800px) translateX(3500px) translateZ(300px) scale3D(1.6, 2, 1.6)">
+        <div style="background:url('img/spr/BUILD011.png')" class="building frontWall"></div>
+        <div style="background:url('img/spr/BUILD011.png')" class="building backWall"></div>
+        <div style="background:url('img/spr/BUILD011.png')" class="building leftWall"></div>
+        <div style="background:url('img/spr/BUILD011.png')" class="building rightWall"></div>
+      </div>
+      
+      <div class="room" id="buidling2" style="transform: translateY(-600px) translateX(4300px) translateZ(-1000px) scale3D(1.6, 2, 1.6)">
+        <div style="background:url('img/spr/BUILD011.png')" class="building frontWall"></div>
+        <div style="background:url('img/spr/BUILD011.png')" class="building backWall"></div>
+        <div style="background:url('img/spr/BUILD011.png')" class="building leftWall"></div>
+        <div style="background:url('img/spr/BUILD011.png')" class="building rightWall"></div>
+      </div>
+      
+      <div class="tree2" style="transform: translate3d(1400px, -250px, -800px) rotateY(-20deg) scale3d(1.5, 1.5, 1.5);"></div>
+
+      <div class="group" style="transform: translate3d(1000px, -100px, -300px);">
+      </div>
+      
+      <div class="tree2" style="transform: translate3d(-600px, -1000px, 2200px) rotateY(-5deg) scale3d(4, 4, 4);"></div>
+      
+      <div class="bubbles" style="transform: scale3D(11, 11, 11) translateY(-300px) translateX(150px) translateZ(-400px);"></div>
+      <div class="bubbles" style="transform: scale3D(11, 11, 11) translateY(-300px) translateX(500px) translateZ(-400px) rotateY(-45deg); "></div>
+      <div class="bubbles" style="transform: scale3D(11, 11, 11) translateY(-300px) translateX(500px) translateZ(0px) rotateY(90deg); "></div>
+      <div class="bubbles" style="transform: scale3D(11, 11, 11) translateY(-300px) translateX(500px) translateZ(400px) rotateY(45deg); "></div>
+      <div class="bubbles" style="transform: scale3D(11, 11, 11) translateY(-300px) translateX(150px) translateZ(400px);"></div>
+      <div class="bubbles" style="transform: scale3D(11, 11, 11) translateY(-300px) translateX(-300px) translateZ(0px) rotateY(90deg); "></div>
+      <div class="bubbles" style="transform: scale3D(11, 11, 11) translateY(-300px) translateX(-300px) translateZ(-400px) rotateY(45deg); "></div>
+
+      <div class="emptyplane" style="transform: scale3D(.15, .15, .15) translateY(-600px) translateX(-2500px) translateZ(100px) rotateY(90deg)"><img src="./images/firstperson/bubble.png" width="100px"><img src="./images/firstperson/bubble.png" style="transform: translateY(-200px)" width="70px"><img src="./images/firstperson/bubble.png" width="120px" style="transform: translateX(-200px) translateY(-500px)"></div>
+
+      
+      
+      <!-- cottage -->
+      <div class="group">
+        <div class="floor" style="transform: translate3d(-1500px, -1400px, 3750px) rotateX(90deg); background: url('./images/firstperson/woodfloor.jpg'); background-size: 400px;"></div>
+        <div class="wallMedium" style="transform: translate3d(-800px, -200px, 2400px);"></div>
+        <div class="emptyplane" style="image-rendering: pixelated; transform: scale3d(.5, 0.5, 0.5) translate3d(-1500px, -400px, 4800px);"><iframe src="./index.html" title="computer" height="575px" width="1090px"></iframe></div>
+      <div class="wallMedium" style="transform: translate3d(-800px, -200px, 2940px);"></div>
+      <div class="wallMedium" style="height: 800px; transform: translate3d(-700px, -800px, 2670px) rotateX(45deg); background: url('./images/firstperson/shingles.jpg'); background-size: 400px;"></div>
+      <div class="wallMedium" style="height: 800px; transform: translate3d(-700px, -800px, 2670px) rotateX(-45deg); background: url('./images/firstperson/shingles.jpg'); background-size: 400px;"></div>
+
+      <div class="wallMedium" style="height: 800px; transform: translate3d(-300px, -500px, 2800px) rotateY(90deg);">
+        
+
+      
+      <!-- door out of cottage -->
+      <img class="clickable" style="transform: translate3d(500px, 350px, 0px);" width="250px" height="350px" src="./images/firstperson/door.png" onclick="teleport(0,0,0)"></div>
+      <div class="wallMedium" style="height: 800px; transform: translate3d(-1200px, -500px, 2800px) rotateY(90deg);">
+        
+      </div>
+      
+      <!-- outer walls -->
+      <div class="wallLong" style="transform: translate3d(-800px, -200px, -1200px);">
+      <!-- door to cottage -->
+      <img class="clickable" style="transform: translate3d(400px, 50px, 0px);" width="250px" height="350px" src="./images/firstperson/door.png" onclick="teleport(28,-1860,-90)">
+      </div>
+      <div class="wallLong" style="transform: translate3d(-800px, -200px, 2000px);"></div>
+      <div class="wallLong" style="transform: rotateY(-90deg) translate3d(400px, -200px, 2400px);"></div>
+      <div class="wallLong" style="transform: rotateY(-90deg) translate3d(400px, -200px, -800px);"></div>
+    </div>
+  </div>
+  
+  <script>
+    var geometry = document.getElementById('geometry');
+    var scene = document.getElementById('scene');
+    var walls = document.querySelectorAll('.wall');
+    
+    var noclip = false;
+  
+    var position = { x: 0, y: 0, z: 0 };
+    var rotation = { x: 0, y: 0, z: 0 };
+    var rotationSpeed = 5;
+    var translationSpeed = 30;
+  
+    document.addEventListener('keydown', function(event) {
+      moveGeometry(event);
+    });
+  
+    function moveGeometry(event) {
+      document.getElementById('info').innerHTML = rotation.y + "<br>" + position.x + "<br>" + position.z;
+      switch (event.key) {
+        case 'ArrowLeft':
+        case 'a':
+          rotation.y -= rotationSpeed;
+          //position.x += translationSpeed;
+          break;
+        case 'ArrowRight':
+        case 'd':
+          rotation.y += rotationSpeed;
+          //position.x -= translationSpeed;
+          break;
+        case 'ArrowUp':
+        case 'w':
+          var newPosition = movePoint(position.x, position.z, translationSpeed, rotation.y);
+          if (inBounds(newPosition.x,  newPosition.z).x) {
+            position.x = newPosition.x;
+          }
+          if (inBounds(newPosition.x,  newPosition.z).z) {
+            position.z = newPosition.z;
+          }
+          break;
+        case 'ArrowDown':
+        case 's':
+          //position.z -= translationSpeed;
+          var newPosition = movePoint(position.x, position.z, -translationSpeed, rotation.y);
+          if (inBounds(newPosition.x,  newPosition.z).x) {
+            position.x = newPosition.x;
+          }
+          if (inBounds(newPosition.x,  newPosition.z).z) {
+            position.z = newPosition.z;
+          }
+          break;
+        case 'v':
+          noclip = !noclip;
+          break;
+      }
+    
+      updateGeometry();
+    }
+  
+    function updateGeometry() {
+      //var newPosition = movePoint(position.x, position.z, translationSpeed, rotation.y);
+      
+      geometry.style.transformOrigin = `${-position.x}px ${-position.y}px ${-position.z + 800}px`;
+      geometry.style.transform = 'translate3d(' + position.x + 'px, ' + position.y + 'px, ' + position.z + 'px) rotateX(' + rotation.x + 'deg) rotateY(' + rotation.y + 'deg) rotateZ(' + rotation.z + 'deg)';
+    }
+    
+    function inBounds(x,z)
+    {   
+      var boundscheck = { x: false, z: false }
+      
+      if (noclip) {
+        boundscheck.x = true;
+        boundscheck.z = true;
+      }
+      
+      if (((x > -2324 && x < 750) && (z > -1130 && z < 1946)) || (x > -160 && x < 601))
+      {
+        boundscheck.x = true;
+      }
+      if ((z > -1130 && z < 1946) || (z > -2066 && z < -1654))
+      {
+        boundscheck.z = true;
+      }
+      
+      return boundscheck;
+    }
+  
+    
+    function movePoint(x, z, distance, angleDegrees) {
+      // Normalize the angle to be within 0 to 360 degrees
+      var normalizedAngle = (angleDegrees % 360 + 360) % 360;
+     
+      // Convert angle from degrees to radians
+      var angleRadians = normalizedAngle * (Math.PI / 180);
+  
+      // Calculate new coordinates
+      var newX = x - distance * Math.sin(angleRadians);
+      var newZ = z + distance * Math.cos(angleRadians);
+  
+      // Return the new coordinates as an object
+      return { x: newX, z: newZ };
+    }
+    
+    function teleport(x, z, rot) {
+      position.x = x;
+      position.z = z;
+      rotation.y = rot;
+      updateGeometry();
+    }
+  </script>
+  
+  
+  
+  </body></html>
